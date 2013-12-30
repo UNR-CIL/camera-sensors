@@ -3,7 +3,7 @@
 //  SensorsTests
 //
 //  Created by John Jusayan on 11/27/13.
-//  Copyright (c) 2013 Treeness, LLC. All rights reserved.
+//  Copyright (c) 2013 CSE UNR All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
