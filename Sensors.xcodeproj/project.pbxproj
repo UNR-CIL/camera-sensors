@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		34D62BEA77B8415A82F81120 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B62DC570C97F456BAD5832D8 /* libPods.a */; };
+		AB496276187202DB00BA966F /* CameraDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB496275187202DB00BA966F /* CameraDetailViewController.m */; };
+		AB4962791874A34B00BA966F /* CollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4962781874A34B00BA966F /* CollectionHeaderView.m */; };
 		AB4BF5C91858F96B0012017E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4BF5C81858F96B0012017E /* QuartzCore.framework */; };
 		AB4BF5D21858FFC80012017E /* ImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4BF5D11858FFC80012017E /* ImageToDataTransformer.m */; };
 		AB4BF5D618595B2E0012017E /* NSString+SCURLParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4BF5D518595B2E0012017E /* NSString+SCURLParsing.m */; };
@@ -46,6 +48,10 @@
 
 /* Begin PBXFileReference section */
 		9F47EBF89DCB440EBCA1A1E5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		AB496274187202DB00BA966F /* CameraDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDetailViewController.h; sourceTree = "<group>"; };
+		AB496275187202DB00BA966F /* CameraDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraDetailViewController.m; sourceTree = "<group>"; };
+		AB4962771874A34B00BA966F /* CollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionHeaderView.h; sourceTree = "<group>"; };
+		AB4962781874A34B00BA966F /* CollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionHeaderView.m; sourceTree = "<group>"; };
 		AB4BF5C81858F96B0012017E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AB4BF5D01858FFC80012017E /* ImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageToDataTransformer.h; sourceTree = "<group>"; };
 		AB4BF5D11858FFC80012017E /* ImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToDataTransformer.m; sourceTree = "<group>"; };
@@ -227,6 +233,10 @@
 				AB8595B61846782600DF5F84 /* AppDelegate.m */,
 				AB85962D184D08E100DF5F84 /* CameraListViewController.h */,
 				AB85962E184D08E100DF5F84 /* CameraListViewController.m */,
+				AB496274187202DB00BA966F /* CameraDetailViewController.h */,
+				AB496275187202DB00BA966F /* CameraDetailViewController.m */,
+				AB4962771874A34B00BA966F /* CollectionHeaderView.h */,
+				AB4962781874A34B00BA966F /* CollectionHeaderView.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -367,11 +377,13 @@
 				AB859632184D1C3000DF5F84 /* CameraPreviewCell.m in Sources */,
 				AB85962F184D08E100DF5F84 /* CameraListViewController.m in Sources */,
 				AB8595B71846782600DF5F84 /* AppDelegate.m in Sources */,
+				AB496276187202DB00BA966F /* CameraDetailViewController.m in Sources */,
 				AB4BF5F1185F8B4D0012017E /* Camera.m in Sources */,
 				AB4BF5D21858FFC80012017E /* ImageToDataTransformer.m in Sources */,
 				AB4BF5EE185F8B4D0012017E /* Image.m in Sources */,
 				AB8595B31846782600DF5F84 /* main.m in Sources */,
 				AB4BF5D618595B2E0012017E /* NSString+SCURLParsing.m in Sources */,
+				AB4962791874A34B00BA966F /* CollectionHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +505,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sensors/Sensors-Prefix.pch";
 				INFOPLIST_FILE = "Sensors/Sensors-Info.plist";
@@ -507,6 +520,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sensors/Sensors-Prefix.pch";
 				INFOPLIST_FILE = "Sensors/Sensors-Info.plist";
