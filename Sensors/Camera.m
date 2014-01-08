@@ -31,7 +31,6 @@
         [photoURLs addObject:fileURLString];
     }];
     
-    NSLog(@">>>] %@", photoURLs);
     return photoURLs;
 }
 
