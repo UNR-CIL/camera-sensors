@@ -49,25 +49,24 @@
                            @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Sheep/Site%201/Camera/Images/",
                            @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Sheep/Site%202/Camera/Images/",
                            @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Sheep/Site%203/Camera/Images/",
-                           @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Sheep/Site%204/Camera/Images/",
-                           ];
+                           @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Sheep/Site%204/Camera/Images/"];
     
     NSArray *snakeURLs = @[
                            @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Snake/Site%201/Camera/Images/",
                            @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Snake/Site%202/Camera/Images/",
                            @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Snake/Site%203/Camera/Images/"];
     
-    [snakeURLs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        Camera *newCamera = [NSEntityDescription insertNewObjectForEntityForName:@"Camera" inManagedObjectContext:self.managedObjectContext];
-        newCamera.baseURL = obj;
-        newCamera.groupName = @"Snake Range";
-        [self.cameraItems[0] addObject:newCamera];
-    }];
-    
     [sheepURLs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Camera *newCamera = [NSEntityDescription insertNewObjectForEntityForName:@"Camera" inManagedObjectContext:self.managedObjectContext];
         newCamera.baseURL = obj;
         newCamera.groupName = @"Sheep Range";
+        [self.cameraItems[0] addObject:newCamera];
+    }];
+    
+    [snakeURLs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        Camera *newCamera = [NSEntityDescription insertNewObjectForEntityForName:@"Camera" inManagedObjectContext:self.managedObjectContext];
+        newCamera.baseURL = obj;
+        newCamera.groupName = @"Snake Range";
         [self.cameraItems[1] addObject:newCamera];
     }];
     
