@@ -34,6 +34,11 @@
     return self;
 }
 
+- (NSArray*)regions
+{
+    return nil;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -59,14 +64,12 @@
     [sheepURLs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Camera *newCamera = [NSEntityDescription insertNewObjectForEntityForName:@"Camera" inManagedObjectContext:self.managedObjectContext];
         newCamera.baseURL = obj;
-        newCamera.groupName = @"Sheep Range";
         [self.cameraItems[0] addObject:newCamera];
     }];
     
     [snakeURLs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Camera *newCamera = [NSEntityDescription insertNewObjectForEntityForName:@"Camera" inManagedObjectContext:self.managedObjectContext];
         newCamera.baseURL = obj;
-        newCamera.groupName = @"Snake Range";
         [self.cameraItems[1] addObject:newCamera];
     }];
     
@@ -128,7 +131,6 @@
         CollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CollectionHeaderView" forIndexPath:indexPath];
         Camera *camera = [self.cameraItems[indexPath.section] objectAtIndex:indexPath.row];
 
-        headerView.titleLabel.text = camera.groupName;
         reusableview = headerView;
     }
     return reusableview;

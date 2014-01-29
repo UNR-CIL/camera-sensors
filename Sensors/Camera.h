@@ -2,8 +2,8 @@
 //  Camera.h
 //  Sensors
 //
-//  Created by John Jusayan on 12/16/13.
-//  Copyright (c) 2013 CSE UNR All rights reserved.
+//  Created by John Jusayan on 1/29/14.
+//  Copyright (c) 2014 Treeness, LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,15 +13,12 @@
 
 @interface Camera : NSManagedObject
 
-@property (nonatomic, retain) NSString * groupName;
+@property (nonatomic, retain) NSString * baseURL;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * orderIndex;
 @property (nonatomic, retain) id thumbnailImage;
-@property (nonatomic, retain) NSString * baseURL;
 @property (nonatomic, retain) NSSet *images;
-
-- (NSArray*)photoURLsFordataString:(NSString*)dataString;
-
+@property (nonatomic, retain) NSManagedObject *site;
 @end
 
 @interface Camera (CoreDataGeneratedAccessors)

@@ -13,8 +13,6 @@
 		AB4BF5C91858F96B0012017E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4BF5C81858F96B0012017E /* QuartzCore.framework */; };
 		AB4BF5D21858FFC80012017E /* ImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4BF5D11858FFC80012017E /* ImageToDataTransformer.m */; };
 		AB4BF5D618595B2E0012017E /* NSString+SCURLParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4BF5D518595B2E0012017E /* NSString+SCURLParsing.m */; };
-		AB4BF5EE185F8B4D0012017E /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4BF5ED185F8B4D0012017E /* Image.m */; };
-		AB4BF5F1185F8B4D0012017E /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4BF5F0185F8B4D0012017E /* Camera.m */; };
 		AB8595A51846782600DF5F84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8595A41846782600DF5F84 /* Foundation.framework */; };
 		AB8595A71846782600DF5F84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8595A61846782600DF5F84 /* CoreGraphics.framework */; };
 		AB8595A91846782600DF5F84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8595A81846782600DF5F84 /* UIKit.framework */; };
@@ -34,6 +32,10 @@
 		AB8595DF1846790E00DF5F84 /* Sensors-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB8595DE1846790E00DF5F84 /* Sensors-iPad.storyboard */; };
 		AB85962F184D08E100DF5F84 /* CameraListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB85962E184D08E100DF5F84 /* CameraListViewController.m */; };
 		AB859632184D1C3000DF5F84 /* CameraPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB859631184D1C3000DF5F84 /* CameraPreviewCell.m */; };
+		ABEAFB0718999B3B00532B5E /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEAFB0618999B3B00532B5E /* Camera.m */; };
+		ABEAFB0A18999B3B00532B5E /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEAFB0918999B3B00532B5E /* Image.m */; };
+		ABEAFB0D18999B3B00532B5E /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEAFB0C18999B3B00532B5E /* Region.m */; };
+		ABEAFB1018999B3B00532B5E /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEAFB0F18999B3B00532B5E /* Site.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +59,6 @@
 		AB4BF5D11858FFC80012017E /* ImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToDataTransformer.m; sourceTree = "<group>"; };
 		AB4BF5D418595B2E0012017E /* NSString+SCURLParsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SCURLParsing.h"; sourceTree = "<group>"; };
 		AB4BF5D518595B2E0012017E /* NSString+SCURLParsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SCURLParsing.m"; sourceTree = "<group>"; };
-		AB4BF5EC185F8B4D0012017E /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
-		AB4BF5ED185F8B4D0012017E /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
-		AB4BF5EF185F8B4D0012017E /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
-		AB4BF5F0185F8B4D0012017E /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
 		AB8595A11846782600DF5F84 /* Sensors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sensors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8595A41846782600DF5F84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AB8595A61846782600DF5F84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,6 +83,15 @@
 		AB85962E184D08E100DF5F84 /* CameraListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraListViewController.m; sourceTree = "<group>"; };
 		AB859630184D1C3000DF5F84 /* CameraPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPreviewCell.h; sourceTree = "<group>"; };
 		AB859631184D1C3000DF5F84 /* CameraPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPreviewCell.m; sourceTree = "<group>"; };
+		ABEAF9781896F1E400532B5E /* Sensors 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sensors 2.xcdatamodel"; sourceTree = "<group>"; };
+		ABEAFB0518999B3B00532B5E /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		ABEAFB0618999B3B00532B5E /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
+		ABEAFB0818999B3B00532B5E /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		ABEAFB0918999B3B00532B5E /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
+		ABEAFB0B18999B3B00532B5E /* Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Region.h; sourceTree = "<group>"; };
+		ABEAFB0C18999B3B00532B5E /* Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Region.m; sourceTree = "<group>"; };
+		ABEAFB0E18999B3B00532B5E /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
+		ABEAFB0F18999B3B00532B5E /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
 		B62DC570C97F456BAD5832D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -204,10 +211,14 @@
 		AB8595D91846786900DF5F84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AB4BF5EF185F8B4D0012017E /* Camera.h */,
-				AB4BF5F0185F8B4D0012017E /* Camera.m */,
-				AB4BF5EC185F8B4D0012017E /* Image.h */,
-				AB4BF5ED185F8B4D0012017E /* Image.m */,
+				ABEAFB0E18999B3B00532B5E /* Site.h */,
+				ABEAFB0F18999B3B00532B5E /* Site.m */,
+				ABEAFB0B18999B3B00532B5E /* Region.h */,
+				ABEAFB0C18999B3B00532B5E /* Region.m */,
+				ABEAFB0818999B3B00532B5E /* Image.h */,
+				ABEAFB0918999B3B00532B5E /* Image.m */,
+				ABEAFB0518999B3B00532B5E /* Camera.h */,
+				ABEAFB0618999B3B00532B5E /* Camera.m */,
 				AB4BF5D01858FFC80012017E /* ImageToDataTransformer.h */,
 				AB4BF5D11858FFC80012017E /* ImageToDataTransformer.m */,
 				AB8595B81846782600DF5F84 /* Sensors.xcdatamodeld */,
@@ -373,14 +384,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABEAFB1018999B3B00532B5E /* Site.m in Sources */,
+				ABEAFB0A18999B3B00532B5E /* Image.m in Sources */,
 				AB8595BA1846782600DF5F84 /* Sensors.xcdatamodeld in Sources */,
 				AB859632184D1C3000DF5F84 /* CameraPreviewCell.m in Sources */,
+				ABEAFB0D18999B3B00532B5E /* Region.m in Sources */,
 				AB85962F184D08E100DF5F84 /* CameraListViewController.m in Sources */,
 				AB8595B71846782600DF5F84 /* AppDelegate.m in Sources */,
 				AB496276187202DB00BA966F /* CameraDetailViewController.m in Sources */,
-				AB4BF5F1185F8B4D0012017E /* Camera.m in Sources */,
 				AB4BF5D21858FFC80012017E /* ImageToDataTransformer.m in Sources */,
-				AB4BF5EE185F8B4D0012017E /* Image.m in Sources */,
+				ABEAFB0718999B3B00532B5E /* Camera.m in Sources */,
 				AB8595B31846782600DF5F84 /* main.m in Sources */,
 				AB4BF5D618595B2E0012017E /* NSString+SCURLParsing.m in Sources */,
 				AB4962791874A34B00BA966F /* CollectionHeaderView.m in Sources */,
@@ -607,9 +620,10 @@
 		AB8595B81846782600DF5F84 /* Sensors.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				ABEAF9781896F1E400532B5E /* Sensors 2.xcdatamodel */,
 				AB8595B91846782600DF5F84 /* Sensors.xcdatamodel */,
 			);
-			currentVersion = AB8595B91846782600DF5F84 /* Sensors.xcdatamodel */;
+			currentVersion = ABEAF9781896F1E400532B5E /* Sensors 2.xcdatamodel */;
 			path = Sensors.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
