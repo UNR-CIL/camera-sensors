@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34D62BEA77B8415A82F81120 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B62DC570C97F456BAD5832D8 /* libPods.a */; };
+		AB23281418A0528400C581C1 /* NSURL+SCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AB23281318A0528400C581C1 /* NSURL+SCUtilities.m */; };
 		AB496276187202DB00BA966F /* CameraDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB496275187202DB00BA966F /* CameraDetailViewController.m */; };
 		AB4962791874A34B00BA966F /* CollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4962781874A34B00BA966F /* CollectionHeaderView.m */; };
 		AB4BF5C91858F96B0012017E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4BF5C81858F96B0012017E /* QuartzCore.framework */; };
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		9F47EBF89DCB440EBCA1A1E5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		AB23281218A0528400C581C1 /* NSURL+SCUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+SCUtilities.h"; sourceTree = "<group>"; };
+		AB23281318A0528400C581C1 /* NSURL+SCUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+SCUtilities.m"; sourceTree = "<group>"; };
 		AB496274187202DB00BA966F /* CameraDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDetailViewController.h; sourceTree = "<group>"; };
 		AB496275187202DB00BA966F /* CameraDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraDetailViewController.m; sourceTree = "<group>"; };
 		AB4962771874A34B00BA966F /* CollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionHeaderView.h; sourceTree = "<group>"; };
@@ -83,7 +86,7 @@
 		AB85962E184D08E100DF5F84 /* CameraListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraListViewController.m; sourceTree = "<group>"; };
 		AB859630184D1C3000DF5F84 /* CameraPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPreviewCell.h; sourceTree = "<group>"; };
 		AB859631184D1C3000DF5F84 /* CameraPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPreviewCell.m; sourceTree = "<group>"; };
-		ABEAF9781896F1E400532B5E /* Sensors 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sensors 2.xcdatamodel"; sourceTree = "<group>"; };
+		ABEAF9781896F1E400532B5E /* Sensors 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sensors 2.xcdatamodel"; sourceTree = "<group>"; };
 		ABEAFB0518999B3B00532B5E /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		ABEAFB0618999B3B00532B5E /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
 		ABEAFB0818999B3B00532B5E /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 			children = (
 				AB4BF5D418595B2E0012017E /* NSString+SCURLParsing.h */,
 				AB4BF5D518595B2E0012017E /* NSString+SCURLParsing.m */,
+				AB23281218A0528400C581C1 /* NSURL+SCUtilities.h */,
+				AB23281318A0528400C581C1 /* NSURL+SCUtilities.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				AB8595B31846782600DF5F84 /* main.m in Sources */,
 				AB4BF5D618595B2E0012017E /* NSString+SCURLParsing.m in Sources */,
 				AB4962791874A34B00BA966F /* CollectionHeaderView.m in Sources */,
+				AB23281418A0528400C581C1 /* NSURL+SCUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

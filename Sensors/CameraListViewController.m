@@ -17,9 +17,13 @@
 #import "CameraDetailViewController.h"
 #import "CollectionHeaderView.h"
 
+#import "AFNetworking.h"
+#import "NSURL+SCUtilities.h"
+
 @interface CameraListViewController ()
 
-@property (nonatomic, strong) NSArray *cameraItems;
+@property (strong, nonatomic) NSArray *cameraItems;
+@property (strong, nonatomic) AFHTTPRequestOperationManager *httpRequestOperationManager;
 
 @end
 
@@ -48,53 +52,38 @@
     
     self.title = @"Cameras";
     
-    self.cameraItems = @[[NSMutableArray new], [NSMutableArray new]];
+    self.httpRequestOperationManager = [AFHTTPRequestOperationManager manager];
     
-    NSArray *sheepURLs = @[
-                           @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Sheep/Site%201/Camera/Images/",
-                           @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Sheep/Site%202/Camera/Images/",
-                           @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Sheep/Site%203/Camera/Images/",
-                           @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Sheep/Site%204/Camera/Images/"];
-    
-    NSArray *snakeURLs = @[
-                           @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Snake/Site%201/Camera/Images/",
-                           @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Snake/Site%202/Camera/Images/",
-                           @"ftp://sensor.nevada.edu/Raw%20Data%20Files/Nevada%20Climate%20Change%20Project/Snake/Site%203/Camera/Images/"];
-    
-    [sheepURLs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        Camera *newCamera = [NSEntityDescription insertNewObjectForEntityForName:@"Camera" inManagedObjectContext:self.managedObjectContext];
-        newCamera.baseURL = obj;
-        [self.cameraItems[0] addObject:newCamera];
-    }];
-    
-    [snakeURLs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        Camera *newCamera = [NSEntityDescription insertNewObjectForEntityForName:@"Camera" inManagedObjectContext:self.managedObjectContext];
-        newCamera.baseURL = obj;
-        [self.cameraItems[1] addObject:newCamera];
-    }];
-    
-    [self.cameraItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSMutableArray *siteCameras = (NSMutableArray*)obj;
+    [self.httpRequestOperationManager GET:[[NSURL sc_fetchRegionsURL] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        [siteCameras enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            Camera *camera = (Camera*)obj;
-            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[camera.baseURL stringByAppendingPathComponent:@"p01.jpg"]]];
+        NSArray *regions = (NSArray*)responseObject;
+        
+        [regions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSString *regionName = (NSString*)obj;
+            regionName = [regionName lowercaseString];
             
-            [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                if (data) {
-                    UIImage *image = [[UIImage alloc] initWithData:data];
-                    
-                    if (image) {
-                        camera.thumbnailImage = image;
-                        [self.collectionView reloadData];
-                    }
-                }
+            [self.httpRequestOperationManager GET:[[NSURL sc_fetchSitesURLForRegionNamed:regionName] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSArray *siteNames = (NSArray*)responseObject;
                 
-                if (connectionError) {
-                    NSLog(@"%@", connectionError.userInfo);
-                }
+                [siteNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    [self.httpRequestOperationManager GET:[[NSURL sc_fetchLatestItemsURLForRegion:regionName site:obj] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        
+                        NSLog(@">>> %@", responseObject);
+                        
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        
+                        NSLog(@">>> ## %@\n%@", operation, error.userInfo);
+                        
+                    }];
+                }];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@">>> ## %@\n%@", operation, error.userInfo);
             }];
+            
         }];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@">>> ## %@\n%@", operation, error.userInfo);
     }];
 }
 
