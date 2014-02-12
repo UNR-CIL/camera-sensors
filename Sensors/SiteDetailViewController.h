@@ -1,5 +1,5 @@
 //
-//  CameraDetailViewController.h
+//  SiteDetailViewController.h
 //  Sensors
 //
 //  Created by John Jusayan on 12/30/13.
@@ -10,7 +10,7 @@
 
 @class Camera;
 
-@interface CameraDetailViewController : UICollectionViewController
+@interface SiteDetailViewController : UICollectionViewController
 
 @property (nonatomic, strong) Camera *detailCamera;
 

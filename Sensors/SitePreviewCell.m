@@ -1,14 +1,14 @@
 //
-//  CameraPreviewCell.m
+//  SitePreviewCell.m
 //  Sensors
 //
 //  Created by John Jusayan on 12/2/13.
 //  Copyright (c) 2013 CSE UNR All rights reserved.
 //
 
-#import "CameraPreviewCell.h"
+#import "SitePreviewCell.h"
 
-@implementation CameraPreviewCell
+@implementation SitePreviewCell
 
 - (id)initWithFrame:(CGRect)frame
 {

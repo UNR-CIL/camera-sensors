@@ -1,5 +1,5 @@
 //
-//  CameraPreviewCell.h
+//  SitePreviewCell.h
 //  Sensors
 //
 //  Created by John Jusayan on 12/2/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CameraPreviewCell : UICollectionViewCell
+@interface SitePreviewCell : UICollectionViewCell
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 

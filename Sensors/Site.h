@@ -2,7 +2,7 @@
 //  Site.h
 //  Sensors
 //
-//  Created by John Jusayan on 1/29/14.
+//  Created by John Jusayan on 2/5/14.
 //  Copyright (c) 2014 Treeness, LLC. All rights reserved.
 //
 
@@ -13,11 +13,17 @@
 
 @interface Site : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
-@property (nonatomic, retain) Region *region;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * regionName;
+@property (nonatomic, retain) NSString * id;
+@property (nonatomic, retain) id thumbnailImage;
 @property (nonatomic, retain) NSSet *cameras;
+@property (nonatomic, retain) Region *region;
+
++ (instancetype)siteFromDictionary:(NSDictionary*)siteDictionary inManagedObjectContext:(NSManagedObjectContext*)context;
+
 @end
 
 @interface Site (CoreDataGeneratedAccessors)

@@ -2,23 +2,26 @@
 //  Camera.h
 //  Sensors
 //
-//  Created by John Jusayan on 1/29/14.
+//  Created by John Jusayan on 2/5/14.
 //  Copyright (c) 2014 Treeness, LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Image;
+@class Image, Site;
 
 @interface Camera : NSManagedObject
 
-@property (nonatomic, retain) NSString * baseURL;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * orderIndex;
 @property (nonatomic, retain) id thumbnailImage;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSSet *images;
-@property (nonatomic, retain) NSManagedObject *site;
+@property (nonatomic, retain) Site *site;
+
++ (instancetype)cameraFromDictionary:(NSDictionary*)cameraDictionary inManagedObjectContext:(NSManagedObjectContext*)context;
+
 @end
 
 @interface Camera (CoreDataGeneratedAccessors)
