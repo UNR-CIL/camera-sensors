@@ -10,6 +10,8 @@
 
 @interface ImagePreviewCell : UICollectionViewCell
 
+/** @abstract Image View that displays the photo
+ */
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
 @end

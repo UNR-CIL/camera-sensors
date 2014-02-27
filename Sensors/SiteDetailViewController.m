@@ -8,8 +8,6 @@
 
 #import "SiteDetailViewController.h"
 
-#import "Camera.h"
-#import "NSString+SCURLParsing.h"
 #import "SitePreviewCell.h"
 
 @interface SiteDetailViewController ()

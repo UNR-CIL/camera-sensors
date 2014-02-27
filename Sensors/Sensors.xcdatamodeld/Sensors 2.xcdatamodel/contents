@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Camera" representedClassName="Camera" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="orderIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="thumbnailImage" optional="YES" attributeType="Transformable" valueTransformerName="ImageToDataTransformer" syncable="YES"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="camera" inverseEntity="Image" syncable="YES"/>
-        <relationship name="site" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Site" inverseName="cameras" inverseEntity="Site" syncable="YES"/>
-    </entity>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Image" representedClassName="Image" syncable="YES">
         <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -16,7 +8,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="orderIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="camera" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Camera" inverseName="images" inverseEntity="Camera" syncable="YES"/>
+        <relationship name="site" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Site" inverseName="images" inverseEntity="Site" syncable="YES"/>
     </entity>
     <entity name="Region" representedClassName="Region" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,11 +25,10 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="regionName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailImage" optional="YES" attributeType="Transformable" valueTransformerName="ImageToDataTransformer" syncable="YES"/>
-        <relationship name="cameras" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Camera" inverseName="site" inverseEntity="Camera" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="site" inverseEntity="Image" syncable="YES"/>
         <relationship name="region" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="sites" inverseEntity="Region" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Camera" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Image" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Region" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Site" positionX="0" positionY="0" width="0" height="0"/>

@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CollectionHeaderView : UICollectionReusableView
+
+/**
+ Title label for the header
+ */
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

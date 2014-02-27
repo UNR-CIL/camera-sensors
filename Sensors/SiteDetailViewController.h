@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class Camera;
+@class Site;
 
 @interface SiteDetailViewController : UICollectionViewController
 
-@property (nonatomic, strong) Camera *detailCamera;
+/**
+ Site being displayed
+ */
+@property (nonatomic, strong) Site *detailSite;
 
 @end

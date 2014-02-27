@@ -12,12 +12,10 @@
 
 #import "Region.h"
 #import "Site.h"
-#import "Camera.h"
 #import "Image.h"
 #import "NSManagedObject+SCEntityFetchOrInsert.h"
 
 #import "AppDelegate.h"
-#import "NSString+SCURLParsing.h"
 #import "SiteDetailViewController.h"
 #import "CollectionHeaderView.h"
 
@@ -26,7 +24,8 @@
 
 @interface CameraListViewController () <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSMutableArray *regions;
+/** @abstract Handles coordination of HTTP requests
+  */
 @property (strong, nonatomic) AFHTTPRequestOperationManager *httpRequestOperationManager;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -35,6 +34,10 @@
 
 @implementation CameraListViewController
 
+/** @abstract Default initializer
+ @param Name of the nib
+ @param Bundle where the nib is located
+ */
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,11 +47,8 @@
     return self;
 }
 
-- (NSArray*)regions
-{
-    return nil;
-}
-
+/** @abstract Called when the view is loaded from a nib or storyboard
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -77,11 +77,6 @@
                     Site *site = [Site siteFromDictionary:@{@"id":[region.id stringByAppendingString:obj], @"name":obj} inManagedObjectContext:self.managedObjectContext];
                     site.regionName = regionName;
                     
-                    NSDictionary *cameraDictionary = @{@"name": site.id, @"id": site.id};
-                    Camera *camera = [Camera cameraFromDictionary:cameraDictionary inManagedObjectContext:self.managedObjectContext];
-                    [site addCamerasObject:camera];
-                    
-                    
                     [self.httpRequestOperationManager GET:[[NSURL sc_fetchLatestItemsURLForRegion:[regionName lowercaseString] site:obj] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         Image *newImage = [Image imageFromDictionary:responseObject inManagedObjectContext:self.managedObjectContext];
                         
@@ -93,8 +88,6 @@
                             if (data) {
                                 UIImage *image = [[UIImage alloc] initWithData:data];
                                 if (image) {
-                                    
-                                    camera.thumbnailImage = image;
                                     site.thumbnailImage = image;
                                 }
                             }
@@ -116,6 +109,8 @@
     }];
 }
 
+/** @abstract Automatically called when the system has low memory
+ */
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -124,17 +119,31 @@
 
 #pragma mark - UICollectionView
 
+/** @abstract Called to determine the number of rows in a section for a collection view
+ @param Collection view being displayed
+ @param The section index being displayed
+ @return Number of rows
+ */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 
+/** @abstract Called to determine the number of sections for a collection view
+ @param Collection view being displayed
+ @return Number of sections
+ */
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return [[self.fetchedResultsController sections] count];
 }
 
+/** @abstract Provides a reusable collection view cell for a collection view
+ @param Collection view being displayed
+ @param Index path for the cell
+ @return Collection view cell to be displayed
+ */
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"SitePreviewCell" forIndexPath:indexPath];
@@ -143,12 +152,22 @@
     return cell;
 }
 
+/** @abstract Configures a collecion view cell
+ @param Collection view being displayed
+ @param The section index being displayed
+ */
 - (void)configureCollectionView:(UICollectionView*)collectionView cell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
     Site *site = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [[(SitePreviewCell*)cell imageView] setImage:site.thumbnailImage];
 }
 
+/** @abstract Provides the header view for the collection view
+ @param Collection view being displayed
+ @param Type of reusable view
+ @param Index path for the header or footer
+ @return Reusable view used as a header or footer
+ */
 - (UICollectionReusableView*)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableview = nil;
@@ -166,22 +185,33 @@
     return reusableview;
 }
 
+/** @abstract Called when a collection view cell is selected by the user
+ @param Collection view being displayed
+ @param Index path of the selected cell
+ */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"CameraDetailViewController" sender:indexPath];
+    [self performSegueWithIdentifier:@"SiteDetailViewController" sender:indexPath];
 }
 
+/** @abstract Called when the navigation controller is about to perform a segue
+ @param Segue being performed
+ @param The sending object
+ */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"CameraDetailViewController"]) {
+    if ([segue.identifier isEqualToString:@"SiteDetailViewController"]) {
         NSIndexPath *indexPath = (NSIndexPath*)sender;
-        Camera *selectedCamera = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [segue.destinationViewController setDetailCamera:selectedCamera];
+        Site *selectedSite = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [segue.destinationViewController setDetailSite:selectedSite];
     }
 }
 
 #pragma mark - Fetched results controller
 
+/** @abstract Manages the fetched objects from the managed object context
+ @discussion This also handles sectioning the sites into the proper regions
+ */
 - (NSFetchedResultsController *)fetchedResultsController
 {
     if (_fetchedResultsController != nil) {
@@ -219,56 +249,10 @@
     return _fetchedResultsController;
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-//    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-//            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-//            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-//    UITableView *tableView = self.tableView;
-    
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-//            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate: {
-            //            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-//            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-//            [self configureCollectionView:self.collectionView cell:cell atIndexPath:indexPath];
-            break;
-        }
-        case NSFetchedResultsChangeMove:
-//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
+/** @abstract Called when one of the objects monitored by the fetched results controller changed
+ */
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-//    [self.tableView endUpdates];
     [self.collectionView reloadData];
 }
 

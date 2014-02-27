@@ -2,12 +2,13 @@
 //  Image.m
 //  Sensors
 //
-//  Created by John Jusayan on 2/5/14.
+//  Created by John Jusayan on 2/26/14.
 //  Copyright (c) 2014 Treeness, LLC. All rights reserved.
 //
 
 #import "Image.h"
-#import "Camera.h"
+#import "Site.h"
+
 #import "NSManagedObject+SCEntityFetchOrInsert.h"
 
 @implementation Image
@@ -15,11 +16,11 @@
 @dynamic data;
 @dynamic date;
 @dynamic fileName;
+@dynamic id;
 @dynamic name;
 @dynamic orderIndex;
-@dynamic id;
 @dynamic url;
-@dynamic camera;
+@dynamic site;
 
 + (instancetype)imageFromDictionary:(NSDictionary*)imageDictionary inManagedObjectContext:(NSManagedObjectContext*)context
 {
@@ -27,7 +28,7 @@
     newImage.name = [imageDictionary objectForKey:@"name"];
     newImage.id = [imageDictionary objectForKey:@"url"];
     newImage.url = [imageDictionary objectForKey:@"url"];
-
+    
 #warning This needs to be NSdate
     //newImage.date = [imageDictionary objectForKey:@"date"];
     return newImage;

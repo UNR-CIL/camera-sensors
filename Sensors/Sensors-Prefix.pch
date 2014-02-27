@@ -16,4 +16,4 @@
     #import <CoreData/CoreData.h>
 #endif
 
-#define SCurlRoot @"http://localhost:9000"
+#define SCurlRoot @"http://li693-184.members.linode.com"

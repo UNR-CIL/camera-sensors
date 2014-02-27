@@ -2,7 +2,7 @@
 //  Region.m
 //  Sensors
 //
-//  Created by John Jusayan on 2/5/14.
+//  Created by John Jusayan on 2/26/14.
 //  Copyright (c) 2014 Treeness, LLC. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @implementation Region
 
+@dynamic id;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic name;
-@dynamic id;
 @dynamic thumbnailImage;
 @dynamic sites;
 

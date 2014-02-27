@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+/** This handles automatically converting NSData objects to UIImages and vice-versa
+ */
 @interface ImageToDataTransformer : NSValueTransformer
 
 @end
