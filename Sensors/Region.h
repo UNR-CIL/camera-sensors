@@ -13,31 +13,31 @@
 
 @interface Region : NSManagedObject
 
-/** @abstract Identifier for object
+/**Identifier for object
  */
 @property (nonatomic, retain) NSString * id;
 
-/** @abstract Latitude for the region
+/**Latitude for the region
  */
 @property (nonatomic, retain) NSNumber * latitude;
 
-/** @abstract Longitude for region
+/**Longitude for region
  */
 @property (nonatomic, retain) NSNumber * longitude;
 
-/** @abstract The name of the region
+/**The name of the region
  */
 @property (nonatomic, retain) NSString * name;
 
-/** @abstract Thumbnail photo for the region
+/**Thumbnail photo for the region
  */
 @property (nonatomic, retain) id thumbnailImage;
 
-/** @abstract Sites in the region
+/**Sites in the region
  */
 @property (nonatomic, retain) NSSet *sites;
 
-/** @abstract Convenience creation method for creating a site
+/**Convenience creation method for creating a site
  @param JSON dictionary containing object data
  @param The managed object context where this managed object will be inserted
  @return Created Region
@@ -48,19 +48,19 @@
 
 @interface Region (CoreDataGeneratedAccessors)
 
-/** @abstract Add a site to this region
+/**Add a site to this region
  */
 - (void)addSitesObject:(Site *)value;
 
-/** @abstract Remove a site from this region
+/**Remove a site from this region
  */
 - (void)removeSitesObject:(Site *)value;
 
-/** @abstract Add a set of sites to this region
+/**Add a set of sites to this region
  */
 - (void)addSites:(NSSet *)values;
 
-/** @abstract Remove a set of sites from this region
+/**Remove a set of sites from this region
  */
 - (void)removeSites:(NSSet *)values;
 

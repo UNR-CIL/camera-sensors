@@ -8,6 +8,8 @@
 	<string>University of Nevada, Reno - Computer Science and Engineering</string>
 	<key>--company-id</key>
 	<string>edu.unr.cse</string>
+    <key>--repeat-first-par</key>
+	<false/>
 	<key>--ignore</key>
 	<array>
 		<string>*.cpp</string>

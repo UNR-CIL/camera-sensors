@@ -10,7 +10,7 @@
 
 @interface CameraListViewController : UICollectionViewController
 
-/** @abstract Core Data managed object context
+/**Core Data managed object context
  
  @discussion This is a reference to the main managed object context from the Application Delegate
  */

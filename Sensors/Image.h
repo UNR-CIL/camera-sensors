@@ -13,39 +13,39 @@
 
 @interface Image : NSManagedObject
 
-/** @abstract Identifier for object
+/**Identifier for object
  */
 @property (nonatomic, retain) NSString * id;
 
-/** @abstract Image byte data
+/**Image byte data
  */
 @property (nonatomic, retain) NSData * data;
 
-/** @abstract Date this image was create
+/**Date this image was create
  */
 @property (nonatomic, retain) NSDate * date;
 
-/** @abstract File name for this image
+/**File name for this image
  */
 @property (nonatomic, retain) NSString * fileName;
 
-/** @abstract Display name for this image
+/**Display name for this image
  */
 @property (nonatomic, retain) NSString * name;
 
-/** @abstract Sorting index
+/**Sorting index
  */
 @property (nonatomic, retain) NSNumber * orderIndex;
 
-/** @abstract The url for this image on the FTP server
+/**The url for this image on the FTP server
  */
 @property (nonatomic, retain) NSString * url;
 
-/** @abstract The site that this image belongs to
+/**The site that this image belongs to
  */
 @property (nonatomic, retain) Site *site;
 
-/** @abstract Convenience creation method for creating an image
+/**Convenience creation method for creating an image
  @param JSON dictionary containing object data
  @param The managed object context where this managed object will be inserted
  @return Created Image

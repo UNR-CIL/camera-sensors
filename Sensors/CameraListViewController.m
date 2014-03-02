@@ -24,7 +24,7 @@
 
 @interface CameraListViewController () <NSFetchedResultsControllerDelegate>
 
-/** @abstract Handles coordination of HTTP requests
+/**Handles coordination of HTTP requests
   */
 @property (strong, nonatomic) AFHTTPRequestOperationManager *httpRequestOperationManager;
 
@@ -34,7 +34,7 @@
 
 @implementation CameraListViewController
 
-/** @abstract Default initializer
+/**Default initializer
  @param Name of the nib
  @param Bundle where the nib is located
  */
@@ -47,7 +47,7 @@
     return self;
 }
 
-/** @abstract Called when the view is loaded from a nib or storyboard
+/**Called when the view is loaded from a nib or storyboard
  */
 - (void)viewDidLoad
 {
@@ -109,7 +109,7 @@
     }];
 }
 
-/** @abstract Automatically called when the system has low memory
+/**Automatically called when the system has low memory
  */
 - (void)didReceiveMemoryWarning
 {
@@ -119,7 +119,7 @@
 
 #pragma mark - UICollectionView
 
-/** @abstract Called to determine the number of rows in a section for a collection view
+/**Called to determine the number of rows in a section for a collection view
  @param Collection view being displayed
  @param The section index being displayed
  @return Number of rows
@@ -130,7 +130,7 @@
     return [sectionInfo numberOfObjects];
 }
 
-/** @abstract Called to determine the number of sections for a collection view
+/**Called to determine the number of sections for a collection view
  @param Collection view being displayed
  @return Number of sections
  */
@@ -139,7 +139,7 @@
     return [[self.fetchedResultsController sections] count];
 }
 
-/** @abstract Provides a reusable collection view cell for a collection view
+/**Provides a reusable collection view cell for a collection view
  @param Collection view being displayed
  @param Index path for the cell
  @return Collection view cell to be displayed
@@ -152,7 +152,7 @@
     return cell;
 }
 
-/** @abstract Configures a collecion view cell
+/**Configures a collecion view cell
  @param Collection view being displayed
  @param The section index being displayed
  */
@@ -162,7 +162,7 @@
     [[(SitePreviewCell*)cell imageView] setImage:site.thumbnailImage];
 }
 
-/** @abstract Provides the header view for the collection view
+/**Provides the header view for the collection view
  @param Collection view being displayed
  @param Type of reusable view
  @param Index path for the header or footer
@@ -185,7 +185,7 @@
     return reusableview;
 }
 
-/** @abstract Called when a collection view cell is selected by the user
+/**Called when a collection view cell is selected by the user
  @param Collection view being displayed
  @param Index path of the selected cell
  */
@@ -194,7 +194,7 @@
     [self performSegueWithIdentifier:@"SiteDetailViewController" sender:indexPath];
 }
 
-/** @abstract Called when the navigation controller is about to perform a segue
+/**Called when the navigation controller is about to perform a segue
  @param Segue being performed
  @param The sending object
  */
@@ -209,7 +209,7 @@
 
 #pragma mark - Fetched results controller
 
-/** @abstract Manages the fetched objects from the managed object context
+/**Manages the fetched objects from the managed object context
  @discussion This also handles sectioning the sites into the proper regions
  */
 - (NSFetchedResultsController *)fetchedResultsController
@@ -249,7 +249,7 @@
     return _fetchedResultsController;
 }
 
-/** @abstract Called when one of the objects monitored by the fetched results controller changed
+/**Called when one of the objects monitored by the fetched results controller changed
  */
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
