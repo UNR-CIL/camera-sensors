@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ImageToDataTransformer.h"
+#import "AFNetworking.h"
 
 @implementation AppDelegate
 
@@ -19,6 +20,9 @@
 {
     ImageToDataTransformer *imageTransformer = [[ImageToDataTransformer alloc] init];
     [NSValueTransformer setValueTransformer:imageTransformer forName:@"ImageToDataTransformer"];
+    
+    self.sharedRequestOperationManager = [AFHTTPRequestOperationManager manager];
+    self.sharedRequestOperationManager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
     return YES;
 }

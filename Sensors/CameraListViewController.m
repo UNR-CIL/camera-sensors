@@ -24,9 +24,6 @@
 
 @interface CameraListViewController () <NSFetchedResultsControllerDelegate>
 
-/**Handles coordination of HTTP requests
-  */
-@property (strong, nonatomic) AFHTTPRequestOperationManager *httpRequestOperationManager;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
@@ -58,11 +55,7 @@
     
     self.title = @"Cameras";
     
-    
-    self.httpRequestOperationManager = [AFHTTPRequestOperationManager manager];
-    self.httpRequestOperationManager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    
-    [self.httpRequestOperationManager GET:[[NSURL sc_fetchRegionsURL] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchRegionsURL] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSArray *regionNames = (NSArray*)responseObject;
 
@@ -70,14 +63,14 @@
             NSString *regionName = (NSString*)obj;
             Region *region = [Region regionFromName:regionName inManagedObjectContext:self.managedObjectContext];
             
-            [self.httpRequestOperationManager GET:[[NSURL sc_fetchSitesURLForRegionNamed:region.id] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchSitesURLForRegionNamed:region.id] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSArray *siteNames = (NSArray*)responseObject;
 
                 [siteNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     Site *site = [Site siteFromDictionary:@{@"id":[region.id stringByAppendingString:obj], @"name":obj} inManagedObjectContext:self.managedObjectContext];
                     site.regionName = regionName;
                     
-                    [self.httpRequestOperationManager GET:[[NSURL sc_fetchLatestItemsURLForRegion:[regionName lowercaseString] site:obj] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchLatestItemURLForRegion:[regionName lowercaseString] site:obj] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         Image *newImage = [Image imageFromDictionary:responseObject inManagedObjectContext:self.managedObjectContext];
                         
                         
@@ -204,6 +197,7 @@
         NSIndexPath *indexPath = (NSIndexPath*)sender;
         Site *selectedSite = [self.fetchedResultsController objectAtIndexPath:indexPath];
         [segue.destinationViewController setDetailSite:selectedSite];
+        [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
     }
 }
 

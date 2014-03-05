@@ -42,6 +42,17 @@
  
  @return NSURL instance used for retrieving the data for a specific site in a specific region
  */
-+ (NSURL*)sc_fetchLatestItemsURLForRegion:(NSString*)regionName site:(NSString*)siteName;
++ (NSURL*)sc_fetchLatestItemURLForRegion:(NSString*)regionName site:(NSString*)siteName;
+
+/**
+ Creates a url used for retrieving the images for a site in a region
+ 
+ @param regionName String identifier for that region
+ @param siteName String identifier for that site
+ @param limit Maximum number of images to fetch
+ 
+ @return NSURL instance used for retrieving the data for a specific site in a specific region
+ */
++ (NSURL*)sc_fetchImagesURLForRegion:(NSString*)regionName site:(NSString*)siteName limit:(NSInteger)limit;
 
 @end

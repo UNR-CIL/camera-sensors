@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class AFHTTPRequestOperationManager;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 /**Main application window for the UI
@@ -45,5 +47,11 @@
 @discussion This is where the sqlite file is located
  */
 - (NSURL *)applicationDocumentsDirectory;
+
+
+/** Shared HTTP Request Manager
+ 
+*/
+@property (nonatomic, strong) AFHTTPRequestOperationManager *sharedRequestOperationManager;
 
 @end

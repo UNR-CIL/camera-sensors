@@ -12,9 +12,12 @@
 
 @interface SiteDetailViewController : UICollectionViewController
 
-/**
- Site being displayed
- */
+/**  Site being displayed
+*/
 @property (nonatomic, strong) Site *detailSite;
+
+/** Managed Object Context
+ */
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end
