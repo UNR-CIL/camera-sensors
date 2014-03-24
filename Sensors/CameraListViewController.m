@@ -59,18 +59,21 @@
         
         NSArray *regionNames = (NSArray*)responseObject;
 
+        NSLog(@">>> regionNames %@", responseObject);
+        
         [regionNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            NSString *regionName = (NSString*)obj;
-            Region *region = [Region regionFromName:regionName inManagedObjectContext:self.managedObjectContext];
+            NSDictionary *regionDictionary = (NSDictionary*)obj;
+            Region *region = [Region regionFromDictionary:regionDictionary inManagedObjectContext:self.managedObjectContext];
             
             [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchSitesURLForRegionNamed:region.id] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSArray *siteNames = (NSArray*)responseObject;
+                NSLog(@">>> siteNames %@", responseObject);
 
                 [siteNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                    Site *site = [Site siteFromDictionary:@{@"id":[region.id stringByAppendingString:obj], @"name":obj} inManagedObjectContext:self.managedObjectContext];
-                    site.regionName = regionName;
+                    Site *site = [Site siteFromDictionary:obj inManagedObjectContext:self.managedObjectContext];
+                    site.regionName = region.name;
                     
-                    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchLatestItemURLForRegion:[regionName lowercaseString] site:obj] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchLatestItemURLForRegion:[[regionDictionary objectForKey:@"id"] lowercaseString] site:site.alias.lowercaseString] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         Image *newImage = [Image imageFromDictionary:responseObject inManagedObjectContext:self.managedObjectContext];
                         
                         

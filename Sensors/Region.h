@@ -17,6 +17,10 @@
  */
 @property (nonatomic, retain) NSString * id;
 
+/**Height in meters for the region
+ */
+@property (nonatomic, retain) NSNumber * altitude;
+
 /**Latitude for the region
  */
 @property (nonatomic, retain) NSNumber * latitude;
@@ -42,7 +46,7 @@
  @param The managed object context where this managed object will be inserted
  @return Created Region
  */
-+ (instancetype)regionFromName:(NSString*)regionName inManagedObjectContext:(NSManagedObjectContext*)context;
++ (instancetype)regionFromDictionary:(NSDictionary*)regionDictionary inManagedObjectContext:(NSManagedObjectContext*)context;
 
 @end
 

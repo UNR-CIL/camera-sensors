@@ -17,6 +17,10 @@
  */
 @property (nonatomic, retain) NSString * id;
 
+/**Actual site identifier for object
+ */
+@property (nonatomic, retain) NSString * alias;
+
 /**Latitude for the site
  */
 @property (nonatomic, retain) NSNumber * latitude;

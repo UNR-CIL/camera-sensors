@@ -15,6 +15,7 @@
 @implementation Site
 
 @dynamic id;
+@dynamic alias;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic name;
@@ -26,8 +27,12 @@
 + (instancetype)siteFromDictionary:(NSDictionary*)siteDictionary inManagedObjectContext:(NSManagedObjectContext*)context
 {
     Site *newSite = [self sc_entityFetchOrInsertForKey:@"id" withValue:[siteDictionary objectForKey:@"id"] inManagedObjectContext:context];
-    newSite.name = [siteDictionary objectForKey:@"name"];
+    newSite.name = [siteDictionary objectForKey:@"display_name"];
     newSite.id = [siteDictionary objectForKey:@"id"];
+    newSite.alias = [siteDictionary objectForKey:@"alias"];
+    newSite.latitude = [siteDictionary objectForKey:@"latitude"];
+    newSite.longitude = [siteDictionary objectForKey:@"longitude"];
+    
     return newSite;
 }
 

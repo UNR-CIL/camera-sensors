@@ -14,17 +14,22 @@
 @implementation Region
 
 @dynamic id;
+@dynamic altitude;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic name;
 @dynamic thumbnailImage;
 @dynamic sites;
 
-+ (instancetype)regionFromName:(NSString*)regionName inManagedObjectContext:(NSManagedObjectContext*)context
++ (instancetype)regionFromDictionary:(NSDictionary*)regionDictionary inManagedObjectContext:(NSManagedObjectContext*)context
 {
-    Region *newRegion = [self sc_entityFetchOrInsertForKey:@"id" withValue:regionName inManagedObjectContext:context];
-    newRegion.name = regionName;
-    newRegion.id = regionName;
+    Region *newRegion = [self sc_entityFetchOrInsertForKey:@"id" withValue:[regionDictionary objectForKey:@"id"] inManagedObjectContext:context];
+    newRegion.name = [regionDictionary objectForKey:@"display_name"];
+    newRegion.id = [regionDictionary objectForKey:@"id"];
+    newRegion.altitude = [regionDictionary objectForKey:@"altitude"];
+    newRegion.latitude = [regionDictionary objectForKey:@"latitude"];
+    newRegion.longitude = [regionDictionary objectForKey:@"longitude"];
+
     return newRegion;
 }
 

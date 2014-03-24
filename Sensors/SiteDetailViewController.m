@@ -40,9 +40,15 @@
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     self.managedObjectContext = appDelegate.managedObjectContext;
     
-    self.images = [NSMutableArray new];
+    self.images = [[[self.detailSite images] allObjects] mutableCopy];
     
-    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchImagesURLForRegion:[self.detailSite.regionName lowercaseString] site:self.detailSite.name limit:50] absoluteString] parameters:NULL success:^(AFHTTPRequestOperation *operation, id responseObject) {
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+
+    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchImagesURLForRegion:[self.detailSite.regionName lowercaseString] site:self.detailSite.alias limit:50] absoluteString] parameters:NULL success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *sites = (NSArray*)responseObject;
         
         [sites enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -52,50 +58,26 @@
             newImage.site = self.detailSite;
             [self.images addObject:newImage];
             
-            NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-            NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
-            
-            [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                if (data) {
-                    UIImage *image = [[UIImage alloc] initWithData:data];
-                    if (image) {
-                        newImage.data = data;
-                        [self.collectionView reloadData];
+            if (newImage.date == nil) {
+                NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
+                
+                [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                    if (data) {
+                        UIImage *image = [[UIImage alloc] initWithData:data];
+                        if (image) {
+                            newImage.data = data;
+                            [self.collectionView reloadData];
+                        }
                     }
-                }
-            }];
-        }];
-
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@">> Response %@", [error userInfo]);
-
-    }];
-
-    /*
-    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchLatestItemURLForRegion:[self.detailSite.regionName lowercaseString] site:self.detailSite.name] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        Image *newImage = [Image imageFromDictionary:responseObject inManagedObjectContext:self.managedObjectContext];
-        
-        
-        NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
-        
-        [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            if (data) {
-                UIImage *image = [[UIImage alloc] initWithData:data];
-                if (image) {
-                    site.thumbnailImage = image;
-                }
+                }];
             }
         }];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@">> Response %@", [error userInfo]);
         
-        NSLog(@"%@\n%@", operation, error.userInfo);
     }];
-
-*/
 }
 
 - (void)didReceiveMemoryWarning

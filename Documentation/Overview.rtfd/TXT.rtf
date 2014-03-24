@@ -1,0 +1,43 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Baskerville;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red39\green118\blue207;}
+{\info
+{\title Overview}}\vieww18560\viewh14220\viewkind0
+\deftab720
+\pard\pardeftab720\sl700\sa254
+
+\f0\b\fs70 \cf0 NCCP iPhone app Overview\
+\pard\pardeftab720\sl560\sa254
+
+\fs58 \cf0 Summary\
+\pard\pardeftab720\sl480\sa382
+
+\b0\fs26 \cf0 The Nevada Cameras app is a Universal iOS app for iPhone and iPad. It receives its data from a REST server that provides an API layer to the archived data from the SiteProxy software.\
+\pard\pardeftab720\sl560\sa254
+
+\b\fs58 \cf0 Architecture\
+\pard\pardeftab720\sl440\sa254
+
+\fs44 \cf0 Server\
+\pard\pardeftab720\sl480\sa382
+
+\b0\fs26 \cf0 The cameras in the field have their data collected by the SiteProxy software. SiteProxy also archives that data in an FTP server. The data in the FTP server is made available via an API through a REST server. The Cameras app uses that API to make structured requests to build up the data it displays.\
+
+\f1\fs24 {{\NeXTGraphic IMG_0028.JPG \width7400 \height9600
+}¬}
+\f0\fs26 \
+				Figure 1\
+\pard\pardeftab720\sl440\sa254
+
+\b\fs44 \cf0 \
+Library Dependencies\
+\pard\pardeftab720\sl480\sa382
+
+\b0\fs26 \cf0 The Cameras uses {\field{\*\fldinst{HYPERLINK "http://cocoapods.org/"}}{\fldrslt \cf2 CocoaPods}} for library management.\
+\pard\pardeftab720\sl560\sa254
+
+\b\fs58 \cf0 Components\
+\pard\pardeftab720\sl480\sa382
+
+\b0\fs26 \cf0 The app uses {\field{\*\fldinst{HYPERLINK "http://cocoadocs.org/docsets/AFNetworking"}}{\fldrslt \cf2 AFNetworking}} for its network library. The data is stored in an {\field{\*\fldinst{HYPERLINK "https://developer.apple.com/library/ios/documentation/CoreData/Reference/NSFetchedResultsController_Class/Reference/Reference.html"}}{\fldrslt \cf2 NSFetchedResultsController}} and the controller sorts, indexes, and sections the data. The sectioned data is then displayed using a {\field{\*\fldinst{HYPERLINK "https://developer.apple.com/library/ios/documentation/uikit/reference/UICollectionView_class/Reference/Reference.html"}}{\fldrslt \cf2 UICollectionViewController}} that displays the photos in a grid sectioned according to regions and sites in those regions.\
+}
