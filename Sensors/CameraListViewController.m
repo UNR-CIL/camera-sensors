@@ -57,21 +57,19 @@
     
     [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchRegionsURL] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSArray *regionNames = (NSArray*)responseObject;
-
-        NSLog(@">>> regionNames %@", responseObject);
+        NSArray *regionDictionaries = (NSArray*)responseObject;
         
-        [regionNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [regionDictionaries enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSDictionary *regionDictionary = (NSDictionary*)obj;
             Region *region = [Region regionFromDictionary:regionDictionary inManagedObjectContext:self.managedObjectContext];
             
             [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchSitesURLForRegionNamed:region.id] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSArray *siteNames = (NSArray*)responseObject;
-                NSLog(@">>> siteNames %@", responseObject);
-
-                [siteNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                NSArray *siteDictionaries = (NSArray*)responseObject;
+                
+                [siteDictionaries enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     Site *site = [Site siteFromDictionary:obj inManagedObjectContext:self.managedObjectContext];
                     site.regionName = region.name;
+                    site.region = region;
                     
                     [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchLatestItemURLForRegion:[[regionDictionary objectForKey:@"id"] lowercaseString] site:site.alias.lowercaseString] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         Image *newImage = [Image imageFromDictionary:responseObject inManagedObjectContext:self.managedObjectContext];
@@ -199,6 +197,9 @@
     if ([segue.identifier isEqualToString:@"SiteDetailViewController"]) {
         NSIndexPath *indexPath = (NSIndexPath*)sender;
         Site *selectedSite = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+        NSAssert(selectedSite.region != nil, @"Region should not be nil");
+        
         [segue.destinationViewController setDetailSite:selectedSite];
         [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
     }

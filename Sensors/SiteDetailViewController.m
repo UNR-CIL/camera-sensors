@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "AFNetworking.h"
 #import "Site.h"
+#import "Region.h"
 #import "Image.h"
 
 #import "ImagePreviewCell.h"
@@ -48,17 +49,18 @@
 {
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 
-    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchImagesURLForRegion:[self.detailSite.regionName lowercaseString] site:self.detailSite.alias limit:50] absoluteString] parameters:NULL success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchImagesURLForRegion:[self.detailSite.region.id lowercaseString] site:self.detailSite.alias limit:50] absoluteString] parameters:NULL success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *sites = (NSArray*)responseObject;
         
         [sites enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSDictionary *imageDictionary = (NSDictionary*)obj;
+                        
             Image *newImage = [Image imageFromDictionary:imageDictionary inManagedObjectContext:self.managedObjectContext];
             
             newImage.site = self.detailSite;
             [self.images addObject:newImage];
             
-            if (newImage.date == nil) {
+            if (newImage.data == nil) {
                 NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
                 NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
                 
