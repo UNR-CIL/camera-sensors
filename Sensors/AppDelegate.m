@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ImageToDataTransformer.h"
 #import "AFNetworking.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @implementation AppDelegate
 
@@ -23,6 +24,8 @@
     
     self.sharedRequestOperationManager = [AFHTTPRequestOperationManager manager];
     self.sharedRequestOperationManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
     return YES;
 }
