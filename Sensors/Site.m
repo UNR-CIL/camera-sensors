@@ -21,6 +21,7 @@
 @dynamic name;
 @dynamic regionName;
 @dynamic thumbnailImage;
+@dynamic thumbnailImageDate;
 @dynamic images;
 @dynamic region;
 

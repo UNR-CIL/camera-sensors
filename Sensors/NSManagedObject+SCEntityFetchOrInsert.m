@@ -25,11 +25,9 @@
     NSManagedObject *newObject;
     
     if (results.count > 0) {
-        NSLog(@"return existing object: %@", propertyValue);
         newObject = [results firstObject];
     }
     else {
-        NSLog(@"return new object: %@", propertyValue);
         newObject = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:context];
     }
     

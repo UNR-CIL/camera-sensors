@@ -42,7 +42,8 @@
     self.managedObjectContext = appDelegate.managedObjectContext;
     
     self.images = [[[self.detailSite images] allObjects] mutableCopy];
-    
+  
+    self.title = self.detailSite.name;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -77,7 +78,7 @@
         }];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@">> Response %@", [error userInfo]);
+        NSLog(@">>> Response %@", [error userInfo]);
         
     }];
 }
@@ -104,9 +105,20 @@
 {
     UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"ImagePreviewCell" forIndexPath:indexPath];
 
-    NSData *data = [[self.images objectAtIndex:indexPath.row] data];
-    [[(ImagePreviewCell*)cell imageView] setImage:[UIImage imageWithData:data]];
+    Image *image = [self.images objectAtIndex:indexPath.row];
     
+    ImagePreviewCell *imagePreviewCell = (ImagePreviewCell*)cell;
+    imagePreviewCell.imageView.image = [UIImage imageWithData:image.data];
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    
+    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    [dateFormatter setTimeZone:gmt];
+    
+    imagePreviewCell.dateLabel.text = [dateFormatter stringFromDate:image.date];
+
     return cell;
 }
 

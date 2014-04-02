@@ -27,12 +27,13 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="regionName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailImage" optional="YES" attributeType="Transformable" valueTransformerName="ImageToDataTransformer" syncable="YES"/>
+        <attribute name="thumbnailImageDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="site" inverseEntity="Image" syncable="YES"/>
         <relationship name="region" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="sites" inverseEntity="Region" syncable="YES"/>
     </entity>
     <elements>
         <element name="Image" positionX="0" positionY="0" width="128" height="165"/>
         <element name="Region" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="Site" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="Site" positionX="0" positionY="0" width="128" height="195"/>
     </elements>
 </model>

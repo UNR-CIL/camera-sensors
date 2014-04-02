@@ -53,7 +53,7 @@
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     self.managedObjectContext = appDelegate.managedObjectContext;
     
-    self.title = @"Cameras";
+    self.title = @"Sites";
     
     [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchRegionsURL] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -83,6 +83,7 @@
                                 UIImage *image = [[UIImage alloc] initWithData:data];
                                 if (image) {
                                     site.thumbnailImage = image;
+                                    site.thumbnailImageDate = newImage.date;
                                 }
                             }
                         }];
@@ -152,8 +153,20 @@
  */
 - (void)configureCollectionView:(UICollectionView*)collectionView cell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
+    SitePreviewCell *sitePreviewCell = (SitePreviewCell*)cell;
+
     Site *site = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [[(SitePreviewCell*)cell imageView] setImage:site.thumbnailImage];
+    sitePreviewCell.imageView.image = site.thumbnailImage;
+    sitePreviewCell.siteNameLabel.text = site.name;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    [dateFormatter setTimeZone:gmt];
+    
+    sitePreviewCell.dateLabel.text = [dateFormatter stringFromDate:site.thumbnailImageDate];
 }
 
 /**Provides the header view for the collection view

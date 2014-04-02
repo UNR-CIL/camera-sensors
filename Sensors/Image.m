@@ -29,8 +29,10 @@
     newImage.id = [imageDictionary objectForKey:@"url"];
     newImage.url = [imageDictionary objectForKey:@"url"];
     
-#warning This needs to be NSdate
-    //newImage.date = [imageDictionary objectForKey:@"date"];
+    NSNumber *dateNumber = [imageDictionary objectForKey:@"date"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:dateNumber.doubleValue/1000];
+    
+    newImage.date = date;
     return newImage;
 }
 

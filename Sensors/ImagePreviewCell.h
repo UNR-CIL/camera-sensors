@@ -14,4 +14,8 @@
  */
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
+/**Label that displays the date
+ */
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 @end

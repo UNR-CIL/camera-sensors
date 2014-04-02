@@ -41,6 +41,10 @@
  */
 @property (nonatomic, retain) id thumbnailImage;
 
+/**Date for the thumbnail Image
+ */
+@property (nonatomic, retain) NSDate *thumbnailImageDate;
+
 /**Images belonging to the site
  */
 @property (nonatomic, retain) NSSet *images;
