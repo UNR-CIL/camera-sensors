@@ -14,6 +14,8 @@
 		AB4962791874A34B00BA966F /* CollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4962781874A34B00BA966F /* CollectionHeaderView.m */; };
 		AB4BF5C91858F96B0012017E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4BF5C81858F96B0012017E /* QuartzCore.framework */; };
 		AB4BF5D21858FFC80012017E /* ImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4BF5D11858FFC80012017E /* ImageToDataTransformer.m */; };
+		AB4F7B0A18FF538800E1D9E3 /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7B0918FF538800E1D9E3 /* ImageScrollView.m */; };
+		AB4F7B1018FF545D00E1D9E3 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7B0F18FF545D00E1D9E3 /* PhotoViewController.m */; };
 		AB8595A51846782600DF5F84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8595A41846782600DF5F84 /* Foundation.framework */; };
 		AB8595A71846782600DF5F84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8595A61846782600DF5F84 /* CoreGraphics.framework */; };
 		AB8595A91846782600DF5F84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8595A81846782600DF5F84 /* UIKit.framework */; };
@@ -63,22 +65,26 @@
 		AB4BF5C81858F96B0012017E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AB4BF5D01858FFC80012017E /* ImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageToDataTransformer.h; sourceTree = "<group>"; };
 		AB4BF5D11858FFC80012017E /* ImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToDataTransformer.m; sourceTree = "<group>"; };
-		AB8595A11846782600DF5F84 /* Sensors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sensors.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB4F7B0818FF538800E1D9E3 /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
+		AB4F7B0918FF538800E1D9E3 /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
+		AB4F7B0E18FF545D00E1D9E3 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		AB4F7B0F18FF545D00E1D9E3 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		AB8595A11846782600DF5F84 /* GB SciCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GB SciCam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8595A41846782600DF5F84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AB8595A61846782600DF5F84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AB8595A81846782600DF5F84 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AB8595AA1846782600DF5F84 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		AB8595AE1846782600DF5F84 /* Sensors-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sensors-Info.plist"; sourceTree = "<group>"; };
+		AB8595AE1846782600DF5F84 /* GB SciCam-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GB SciCam-Info.plist"; sourceTree = "<group>"; };
 		AB8595B01846782600DF5F84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB8595B21846782600DF5F84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AB8595B41846782600DF5F84 /* Sensors-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sensors-Prefix.pch"; sourceTree = "<group>"; };
+		AB8595B41846782600DF5F84 /* GB SciCam-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GB SciCam-Prefix.pch"; sourceTree = "<group>"; };
 		AB8595B51846782600DF5F84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AB8595B61846782600DF5F84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AB8595B91846782600DF5F84 /* Sensors.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sensors.xcdatamodel; sourceTree = "<group>"; };
 		AB8595BB1846782600DF5F84 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		AB8595C11846782600DF5F84 /* SensorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SensorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8595C11846782600DF5F84 /* GB SciCamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GB SciCamTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8595C21846782600DF5F84 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		AB8595CB1846782600DF5F84 /* SensorsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SensorsTests-Info.plist"; sourceTree = "<group>"; };
+		AB8595CB1846782600DF5F84 /* GB SciCamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GB SciCamTests-Info.plist"; sourceTree = "<group>"; };
 		AB8595CD1846782600DF5F84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB8595CF1846782600DF5F84 /* SensorsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SensorsTests.m; sourceTree = "<group>"; };
 		AB8595DC184678FB00DF5F84 /* Sensors-iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Sensors-iPhone.storyboard"; sourceTree = "<group>"; };
@@ -151,8 +157,8 @@
 		AB8595A21846782600DF5F84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB8595A11846782600DF5F84 /* Sensors.app */,
-				AB8595C11846782600DF5F84 /* SensorsTests.xctest */,
+				AB8595A11846782600DF5F84 /* GB SciCam.app */,
+				AB8595C11846782600DF5F84 /* GB SciCamTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,10 +194,10 @@
 		AB8595AD1846782600DF5F84 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AB8595AE1846782600DF5F84 /* Sensors-Info.plist */,
+				AB8595AE1846782600DF5F84 /* GB SciCam-Info.plist */,
 				AB8595AF1846782600DF5F84 /* InfoPlist.strings */,
 				AB8595B21846782600DF5F84 /* main.m */,
-				AB8595B41846782600DF5F84 /* Sensors-Prefix.pch */,
+				AB8595B41846782600DF5F84 /* GB SciCam-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -208,7 +214,7 @@
 		AB8595CA1846782600DF5F84 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AB8595CB1846782600DF5F84 /* SensorsTests-Info.plist */,
+				AB8595CB1846782600DF5F84 /* GB SciCamTests-Info.plist */,
 				AB8595CC1846782600DF5F84 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -241,6 +247,8 @@
 				ABC8DE3518A962200052DA04 /* ImagePreviewCell.m */,
 				AB859630184D1C3000DF5F84 /* SitePreviewCell.h */,
 				AB859631184D1C3000DF5F84 /* SitePreviewCell.m */,
+				AB4F7B0818FF538800E1D9E3 /* ImageScrollView.h */,
+				AB4F7B0918FF538800E1D9E3 /* ImageScrollView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -256,6 +264,8 @@
 				AB496275187202DB00BA966F /* SiteDetailViewController.m */,
 				AB4962771874A34B00BA966F /* CollectionHeaderView.h */,
 				AB4962781874A34B00BA966F /* CollectionHeaderView.m */,
+				AB4F7B0E18FF545D00E1D9E3 /* PhotoViewController.h */,
+				AB4F7B0F18FF545D00E1D9E3 /* PhotoViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -263,9 +273,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AB8595A01846782600DF5F84 /* Sensors */ = {
+		AB8595A01846782600DF5F84 /* GB SciCam */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB8595D31846782600DF5F84 /* Build configuration list for PBXNativeTarget "Sensors" */;
+			buildConfigurationList = AB8595D31846782600DF5F84 /* Build configuration list for PBXNativeTarget "GB SciCam" */;
 			buildPhases = (
 				4A72EA2A664547688ADFB335 /* Check Pods Manifest.lock */,
 				AB85959D1846782600DF5F84 /* Sources */,
@@ -277,14 +287,14 @@
 			);
 			dependencies = (
 			);
-			name = Sensors;
+			name = "GB SciCam";
 			productName = Sensors;
-			productReference = AB8595A11846782600DF5F84 /* Sensors.app */;
+			productReference = AB8595A11846782600DF5F84 /* GB SciCam.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AB8595C01846782600DF5F84 /* SensorsTests */ = {
+		AB8595C01846782600DF5F84 /* GB SciCamTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB8595D61846782600DF5F84 /* Build configuration list for PBXNativeTarget "SensorsTests" */;
+			buildConfigurationList = AB8595D61846782600DF5F84 /* Build configuration list for PBXNativeTarget "GB SciCamTests" */;
 			buildPhases = (
 				AB8595BD1846782600DF5F84 /* Sources */,
 				AB8595BE1846782600DF5F84 /* Frameworks */,
@@ -295,9 +305,9 @@
 			dependencies = (
 				AB8595C81846782600DF5F84 /* PBXTargetDependency */,
 			);
-			name = SensorsTests;
+			name = "GB SciCamTests";
 			productName = SensorsTests;
-			productReference = AB8595C11846782600DF5F84 /* SensorsTests.xctest */;
+			productReference = AB8595C11846782600DF5F84 /* GB SciCamTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -309,12 +319,15 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Treeness, LLC";
 				TargetAttributes = {
+					AB8595A01846782600DF5F84 = {
+						DevelopmentTeam = KC289229J8;
+					};
 					AB8595C01846782600DF5F84 = {
 						TestTargetID = AB8595A01846782600DF5F84;
 					};
 				};
 			};
-			buildConfigurationList = AB85959C1846782600DF5F84 /* Build configuration list for PBXProject "Sensors" */;
+			buildConfigurationList = AB85959C1846782600DF5F84 /* Build configuration list for PBXProject "GB SciCam" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -326,8 +339,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AB8595A01846782600DF5F84 /* Sensors */,
-				AB8595C01846782600DF5F84 /* SensorsTests */,
+				AB8595A01846782600DF5F84 /* GB SciCam */,
+				AB8595C01846782600DF5F84 /* GB SciCamTests */,
 			);
 		};
 /* End PBXProject section */
@@ -402,6 +415,8 @@
 				AB496276187202DB00BA966F /* SiteDetailViewController.m in Sources */,
 				AB4BF5D21858FFC80012017E /* ImageToDataTransformer.m in Sources */,
 				AB8595B31846782600DF5F84 /* main.m in Sources */,
+				AB4F7B1018FF545D00E1D9E3 /* PhotoViewController.m in Sources */,
+				AB4F7B0A18FF538800E1D9E3 /* ImageScrollView.m in Sources */,
 				AB23281718A2C84B00C581C1 /* NSManagedObject+SCEntityFetchOrInsert.m in Sources */,
 				AB9E030518BE833F00D5B3F3 /* Image.m in Sources */,
 				AB9E030818BE834000D5B3F3 /* Region.m in Sources */,
@@ -423,7 +438,7 @@
 /* Begin PBXTargetDependency section */
 		AB8595C81846782600DF5F84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AB8595A01846782600DF5F84 /* Sensors */;
+			target = AB8595A01846782600DF5F84 /* GB SciCam */;
 			targetProxy = AB8595C71846782600DF5F84 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -530,10 +545,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Sensors/Sensors-Prefix.pch";
-				INFOPLIST_FILE = "Sensors/Sensors-Info.plist";
+				GCC_PREFIX_HEADER = "Sensors/GB SciCam-Prefix.pch";
+				INFOPLIST_FILE = "Sensors/GB SciCam-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "GB SciCam";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -546,10 +561,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Sensors/Sensors-Prefix.pch";
-				INFOPLIST_FILE = "Sensors/Sensors-Info.plist";
+				GCC_PREFIX_HEADER = "Sensors/GB SciCam-Prefix.pch";
+				INFOPLIST_FILE = "Sensors/GB SciCam-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "GB SciCam";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -570,8 +585,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SensorsTests/SensorsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "SensorsTests/GB SciCamTests-Info.plist";
+				PRODUCT_NAME = "GB SciCamTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -589,8 +604,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sensors/Sensors-Prefix.pch";
-				INFOPLIST_FILE = "SensorsTests/SensorsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "SensorsTests/GB SciCamTests-Info.plist";
+				PRODUCT_NAME = "GB SciCamTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -599,7 +614,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AB85959C1846782600DF5F84 /* Build configuration list for PBXProject "Sensors" */ = {
+		AB85959C1846782600DF5F84 /* Build configuration list for PBXProject "GB SciCam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB8595D11846782600DF5F84 /* Debug */,
@@ -608,7 +623,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB8595D31846782600DF5F84 /* Build configuration list for PBXNativeTarget "Sensors" */ = {
+		AB8595D31846782600DF5F84 /* Build configuration list for PBXNativeTarget "GB SciCam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB8595D41846782600DF5F84 /* Debug */,
@@ -617,7 +632,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB8595D61846782600DF5F84 /* Build configuration list for PBXNativeTarget "SensorsTests" */ = {
+		AB8595D61846782600DF5F84 /* Build configuration list for PBXNativeTarget "GB SciCamTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB8595D71846782600DF5F84 /* Debug */,

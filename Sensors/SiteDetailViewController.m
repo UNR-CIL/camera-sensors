@@ -14,12 +14,15 @@
 #import "Region.h"
 #import "Image.h"
 
+#import "PhotoViewController.h"
+
 #import "ImagePreviewCell.h"
 
 @interface SiteDetailViewController ()
 
 @property (strong, nonatomic) NSArray *imageURLs;
 @property (strong, nonatomic) NSMutableArray *images;
+@property (strong, nonatomic) UIPopoverController *photoPopover;
 
 @end
 
@@ -120,6 +123,32 @@
     imagePreviewCell.dateLabel.text = [dateFormatter stringFromDate:image.date];
 
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    Image *detailImage = [self.images objectAtIndex:indexPath.row];
+    [self showPhotoDetail:detailImage forCell:cell];
+}
+
+- (void)showPhotoDetail:(Image*)detailImage forCell:(UICollectionViewCell*)cell
+{
+    if (detailImage.data) {
+        PhotoViewController *viewController = [PhotoViewController photoViewController];
+        viewController.image =  [UIImage imageWithData:detailImage.data];
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            self.photoPopover = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+            [self.photoPopover presentPopoverFromRect:cell.frame inView:cell permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+        
+        else {
+            [self presentViewController:navigationController animated:YES completion:NULL];
+        }
+    }
 }
 
 
