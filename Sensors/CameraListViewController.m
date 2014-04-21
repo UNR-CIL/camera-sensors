@@ -74,24 +74,30 @@
                     [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchLatestItemURLForRegion:[[regionDictionary objectForKey:@"id"] lowercaseString] site:site.alias.lowercaseString] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         Image *newImage = [Image imageFromDictionary:responseObject inManagedObjectContext:self.managedObjectContext];
                         
-                        
-                        NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-                        NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
-                        
-                        [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                            if (data) {
-                                UIImage *image = [[UIImage alloc] initWithData:data];
-                                if (image) {
-                                    site.thumbnailImage = image;
-                                    site.thumbnailImageDate = newImage.date;
+                        if (newImage.data == nil) {
+                            
+                            NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                            NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
+                            
+                            [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                                if (data) {
+                                    UIImage *image = [[UIImage alloc] initWithData:data];
+                                    if (image) {
+                                        site.thumbnailImage = image;
+                                        site.thumbnailImageDate = newImage.date;
+                                        
+                                        NSError *error;
+                                        [newImage.managedObjectContext save:&error];
+                                    }
                                 }
-                            }
-                        }];
-
+                            }];
+                        }
+                        
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                         
                         NSLog(@"%@\n%@", operation, error.userInfo);
                     }];
+                    
                 }];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"%@\n%@", operation, error.userInfo);

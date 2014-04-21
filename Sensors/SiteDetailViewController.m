@@ -53,7 +53,7 @@
 {
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 
-    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchImagesURLForRegion:[self.detailSite.region.id lowercaseString] site:self.detailSite.alias limit:50] absoluteString] parameters:NULL success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchImagesURLForRegion:[self.detailSite.region.id lowercaseString] site:self.detailSite.alias limit:20] absoluteString] parameters:NULL success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *sites = (NSArray*)responseObject;
         
         [sites enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -73,6 +73,8 @@
                         UIImage *image = [[UIImage alloc] initWithData:data];
                         if (image) {
                             newImage.data = data;
+                            NSError *error;
+                            [newImage.managedObjectContext save:&error];
                             [self.collectionView reloadData];
                         }
                     }
