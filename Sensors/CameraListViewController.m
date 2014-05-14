@@ -55,6 +55,15 @@
     
     self.title = @"Sites";
     
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+
     [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchRegionsURL] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSArray *regionDictionaries = (NSArray*)responseObject;
@@ -71,8 +80,12 @@
                     site.regionName = region.name;
                     site.region = region;
                     
+                    NSLog(@">>> Site %@", site);
+                    
                     [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchLatestItemURLForRegion:[[regionDictionary objectForKey:@"id"] lowercaseString] site:site.alias.lowercaseString] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         Image *newImage = [Image imageFromDictionary:responseObject inManagedObjectContext:self.managedObjectContext];
+                        
+                        NSLog(@">>>>] responseObject %@", responseObject);
                         
                         if (newImage.data == nil) {
                             

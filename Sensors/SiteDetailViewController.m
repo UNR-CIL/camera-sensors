@@ -144,7 +144,7 @@
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             self.photoPopover = [[UIPopoverController alloc] initWithContentViewController:navigationController];
-            [self.photoPopover presentPopoverFromRect:cell.frame inView:cell permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            [self.photoPopover presentPopoverFromRect:cell.bounds inView:cell permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }
         
         else {
