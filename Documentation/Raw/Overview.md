@@ -1,7 +1,7 @@
-# NCCP iPhone app Overview
+# GB SciCam Overview
 
 ## Summary
-The Nevada Cameras app is a Universal iOS app for iPhone and iPad. It receives its data from a REST server that provides an API layer to the archived data from the SiteProxy software.
+The GB SciCam is a Universal iOS app for iPhone and iPad. It receives its data from a REST server that provides an API layer to the archived data from the SiteProxy software.
 
 ## Architecture
 
