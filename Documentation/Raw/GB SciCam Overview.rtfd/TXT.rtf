@@ -1,0 +1,40 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf200
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue233;}
+\vieww11020\viewh16820\viewkind0
+\deftab720
+\pard\pardeftab720\sa321
+
+\f0\b\fs48 \cf0 GB SciCam Overview\
+\pard\pardeftab720\sa298
+
+\fs36 \cf0 Summary\
+\pard\pardeftab720\sa240
+
+\b0\fs24 \cf0 The GB SciCam is a Universal iOS app for iPhone and iPad. It receives its data from a REST server that provides an API layer to the archived data from the SiteProxy software.\
+\pard\pardeftab720\sa298
+
+\b\fs36 \cf0 Architecture\
+\pard\pardeftab720\sa280
+
+\fs28 \cf0 Server\
+
+\f1\b0\fs24 {{\NeXTGraphic IMG_0028.JPG \width6000 \height7800
+}¬}
+\f0\b\fs28 \
+\pard\pardeftab720\sa240
+
+\b0\fs24 \cf0 The cameras in the field have their data collected by the SiteProxy software. SiteProxy also archives that data in an FTP server. The data in the FTP server is made available via an API through a REST server. The Cameras app uses that API to make structured requests to build up the data it displays.\
+\pard\pardeftab720\sa280
+
+\b\fs28 \cf0 Library Dependencies\
+\pard\pardeftab720\sa240
+
+\b0\fs24 \cf0 The Cameras uses \cf2 \ul \ulc2 CocoaPods\cf0 \ulnone  for library management.\
+\pard\pardeftab720\sa298
+
+\b\fs36 \cf0 Components\
+\pard\pardeftab720\sa240
+
+\b0\fs24 \cf0 The app uses \cf2 \ul \ulc2 AFNetworking\cf0 \ulnone  for its network library. The data is stored in an \cf2 \ul \ulc2 NSFetchedResultsController\cf0 \ulnone  and the controller sorts, indexes, and sections the data. The sectioned data is then displayed using a \cf2 \ul \ulc2 UICollectionViewController\cf0 \ulnone  that displays the photos in a grid sectioned according to regions and sites in those regions.\
+}
