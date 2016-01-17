@@ -57,8 +57,9 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+
 // (this can also be defined in Info.plist via UISupportedInterfaceOrientations)
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAll;
 }

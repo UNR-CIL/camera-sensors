@@ -7,16 +7,34 @@
       "scale" : "2x"
     },
     {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "spotlight@3x.png",
+      "scale" : "3x"
+    },
+    {
       "size" : "40x40",
       "idiom" : "iphone",
       "filename" : "GB-SciCam_logo-40@2x-1.png",
       "scale" : "2x"
     },
     {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "spotlight40@3x.png",
+      "scale" : "3x"
+    },
+    {
       "size" : "60x60",
       "idiom" : "iphone",
       "filename" : "GB-SciCam_logo@2x.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "phone60@3x.png",
+      "scale" : "3x"
     },
     {
       "size" : "29x29",
@@ -52,6 +70,12 @@
       "size" : "76x76",
       "idiom" : "ipad",
       "filename" : "GB-SciCam_logo-76@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "padPro@2x.png",
       "scale" : "2x"
     }
   ],

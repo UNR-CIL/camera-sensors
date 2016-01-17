@@ -51,6 +51,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 
     [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchImagesURLForRegion:[self.detailSite.region.id lowercaseString] site:self.detailSite.alias limit:20] absoluteString] parameters:NULL success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -65,10 +67,10 @@
             [self.images addObject:newImage];
             
             if (newImage.data == nil) {
-                NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
                 NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
                 
-                [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                [[NSURLSession sharedSession] dataTaskWithRequest:imageRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                     if (data) {
                         UIImage *image = [[UIImage alloc] initWithData:data];
                         if (image) {

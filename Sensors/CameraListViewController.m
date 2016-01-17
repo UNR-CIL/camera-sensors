@@ -89,10 +89,9 @@
                         
                         if (newImage.data == nil) {
                             
-                            NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                            NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
                             NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
-                            
-                            [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                            [[NSURLSession sharedSession] dataTaskWithRequest:imageRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                 if (data) {
                                     UIImage *image = [[UIImage alloc] initWithData:data];
                                     if (image) {
