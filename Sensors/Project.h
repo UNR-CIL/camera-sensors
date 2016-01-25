@@ -1,5 +1,5 @@
 //
-//  Site.h
+//  Project.h
 //  GB SciCam
 //
 //  Created by John Jusayan on 1/17/16.
@@ -9,17 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Image, Project;
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Site : NSManagedObject
+@interface Project : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
-+ (instancetype)siteFromDictionary:(NSDictionary*)siteDictionary inManagedObjectContext:(NSManagedObjectContext*)context;
+
++ (instancetype)projectFromDictionary:(NSDictionary*)projectDictionary inManagedObjectContext:(NSManagedObjectContext*)context;
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "Site+CoreDataProperties.h"
+#import "Project+CoreDataProperties.h"

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		34D62BEA77B8415A82F81120 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B62DC570C97F456BAD5832D8 /* libPods.a */; };
+		47C0EE5F1C4C1E8B00CF4656 /* Project+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C0EE5C1C4C1E8B00CF4656 /* Project+CoreDataProperties.m */; };
+		47C0EE601C4C1E8B00CF4656 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C0EE5E1C4C1E8B00CF4656 /* Project.m */; };
+		47C0EE6B1C4C367700CF4656 /* Site+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C0EE681C4C367700CF4656 /* Site+CoreDataProperties.m */; };
+		47C0EE6C1C4C367700CF4656 /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C0EE6A1C4C367700CF4656 /* Site.m */; };
 		AB23281418A0528400C581C1 /* NSURL+SCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AB23281318A0528400C581C1 /* NSURL+SCUtilities.m */; };
 		AB23281718A2C84B00C581C1 /* NSManagedObject+SCEntityFetchOrInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AB23281618A2C84B00C581C1 /* NSManagedObject+SCEntityFetchOrInsert.m */; };
 		AB496276187202DB00BA966F /* SiteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB496275187202DB00BA966F /* SiteDetailViewController.m */; };
@@ -37,8 +41,6 @@
 		AB859632184D1C3000DF5F84 /* SitePreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB859631184D1C3000DF5F84 /* SitePreviewCell.m */; };
 		AB9E030218BE747800D5B3F3 /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB9E030118BE747800D5B3F3 /* AppledocSettings.plist */; };
 		AB9E030518BE833F00D5B3F3 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9E030418BE833F00D5B3F3 /* Image.m */; };
-		AB9E030818BE834000D5B3F3 /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9E030718BE834000D5B3F3 /* Region.m */; };
-		AB9E030B18BE834000D5B3F3 /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9E030A18BE834000D5B3F3 /* Site.m */; };
 		ABC8DE3618A962200052DA04 /* ImagePreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC8DE3518A962200052DA04 /* ImagePreviewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		47C0EE551C4C1DA700CF4656 /* Sensors 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sensors 3.xcdatamodel"; sourceTree = "<group>"; };
+		47C0EE561C4C1E1900CF4656 /* GB SciCam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GB SciCam-Bridging-Header.h"; sourceTree = "<group>"; };
+		47C0EE5B1C4C1E8B00CF4656 /* Project+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+CoreDataProperties.h"; sourceTree = "<group>"; };
+		47C0EE5C1C4C1E8B00CF4656 /* Project+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+CoreDataProperties.m"; sourceTree = "<group>"; };
+		47C0EE5D1C4C1E8B00CF4656 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		47C0EE5E1C4C1E8B00CF4656 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		47C0EE671C4C367700CF4656 /* Site+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Site+CoreDataProperties.h"; sourceTree = "<group>"; };
+		47C0EE681C4C367700CF4656 /* Site+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Site+CoreDataProperties.m"; sourceTree = "<group>"; };
+		47C0EE691C4C367700CF4656 /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
+		47C0EE6A1C4C367700CF4656 /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
 		62695BB2CC1D4B98FF41DD98 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AA17D086B649FB85278F9890 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		AB23281218A0528400C581C1 /* NSURL+SCUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+SCUtilities.h"; sourceTree = "<group>"; };
@@ -97,10 +109,6 @@
 		AB9E030118BE747800D5B3F3 /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		AB9E030318BE833F00D5B3F3 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		AB9E030418BE833F00D5B3F3 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
-		AB9E030618BE834000D5B3F3 /* Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Region.h; sourceTree = "<group>"; };
-		AB9E030718BE834000D5B3F3 /* Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Region.m; sourceTree = "<group>"; };
-		AB9E030918BE834000D5B3F3 /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
-		AB9E030A18BE834000D5B3F3 /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
 		ABC8DE3418A962200052DA04 /* ImagePreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePreviewCell.h; sourceTree = "<group>"; };
 		ABC8DE3518A962200052DA04 /* ImagePreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePreviewCell.m; sourceTree = "<group>"; };
 		ABEAF9781896F1E400532B5E /* Sensors 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sensors 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -233,17 +241,22 @@
 		AB8595D91846786900DF5F84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				47C0EE5B1C4C1E8B00CF4656 /* Project+CoreDataProperties.h */,
+				47C0EE5C1C4C1E8B00CF4656 /* Project+CoreDataProperties.m */,
+				47C0EE5D1C4C1E8B00CF4656 /* Project.h */,
+				47C0EE5E1C4C1E8B00CF4656 /* Project.m */,
+				47C0EE671C4C367700CF4656 /* Site+CoreDataProperties.h */,
+				47C0EE681C4C367700CF4656 /* Site+CoreDataProperties.m */,
+				47C0EE691C4C367700CF4656 /* Site.h */,
+				47C0EE6A1C4C367700CF4656 /* Site.m */,
 				AB23281518A2C84B00C581C1 /* NSManagedObject+SCEntityFetchOrInsert.h */,
 				AB23281618A2C84B00C581C1 /* NSManagedObject+SCEntityFetchOrInsert.m */,
 				AB4BF5D01858FFC80012017E /* ImageToDataTransformer.h */,
 				AB4BF5D11858FFC80012017E /* ImageToDataTransformer.m */,
-				AB9E030918BE834000D5B3F3 /* Site.h */,
-				AB9E030A18BE834000D5B3F3 /* Site.m */,
-				AB9E030618BE834000D5B3F3 /* Region.h */,
-				AB9E030718BE834000D5B3F3 /* Region.m */,
 				AB9E030318BE833F00D5B3F3 /* Image.h */,
 				AB9E030418BE833F00D5B3F3 /* Image.m */,
 				AB8595B81846782600DF5F84 /* Sensors.xcdatamodeld */,
+				47C0EE561C4C1E1900CF4656 /* GB SciCam-Bridging-Header.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -326,6 +339,7 @@
 		AB8595991846782600DF5F84 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Treeness, LLC";
 				TargetAttributes = {
@@ -419,19 +433,21 @@
 				AB8595BA1846782600DF5F84 /* Sensors.xcdatamodeld in Sources */,
 				ABC8DE3618A962200052DA04 /* ImagePreviewCell.m in Sources */,
 				AB859632184D1C3000DF5F84 /* SitePreviewCell.m in Sources */,
+				47C0EE601C4C1E8B00CF4656 /* Project.m in Sources */,
 				AB85962F184D08E100DF5F84 /* CameraListViewController.m in Sources */,
-				AB9E030B18BE834000D5B3F3 /* Site.m in Sources */,
 				AB8595B71846782600DF5F84 /* AppDelegate.m in Sources */,
 				AB496276187202DB00BA966F /* SiteDetailViewController.m in Sources */,
 				AB4BF5D21858FFC80012017E /* ImageToDataTransformer.m in Sources */,
+				47C0EE6C1C4C367700CF4656 /* Site.m in Sources */,
 				AB8595B31846782600DF5F84 /* main.m in Sources */,
 				AB4F7B1018FF545D00E1D9E3 /* PhotoViewController.m in Sources */,
 				AB4F7B0A18FF538800E1D9E3 /* ImageScrollView.m in Sources */,
 				AB23281718A2C84B00C581C1 /* NSManagedObject+SCEntityFetchOrInsert.m in Sources */,
 				AB9E030518BE833F00D5B3F3 /* Image.m in Sources */,
-				AB9E030818BE834000D5B3F3 /* Region.m in Sources */,
+				47C0EE5F1C4C1E8B00CF4656 /* Project+CoreDataProperties.m in Sources */,
 				AB4962791874A34B00BA966F /* CollectionHeaderView.m in Sources */,
 				AB23281418A0528400C581C1 /* NSURL+SCUtilities.m in Sources */,
+				47C0EE6B1C4C367700CF4656 /* Site+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,13 +568,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sensors/GB SciCam-Prefix.pch";
 				INFOPLIST_FILE = "Sensors/GB SciCam-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.unr.cse.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "GB SciCam";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sensors/GB SciCam-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -569,13 +589,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sensors/GB SciCam-Prefix.pch";
 				INFOPLIST_FILE = "Sensors/GB SciCam-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.unr.cse.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "GB SciCam";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sensors/GB SciCam-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -658,10 +681,11 @@
 		AB8595B81846782600DF5F84 /* Sensors.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				47C0EE551C4C1DA700CF4656 /* Sensors 3.xcdatamodel */,
 				ABEAF9781896F1E400532B5E /* Sensors 2.xcdatamodel */,
 				AB8595B91846782600DF5F84 /* Sensors.xcdatamodel */,
 			);
-			currentVersion = ABEAF9781896F1E400532B5E /* Sensors 2.xcdatamodel */;
+			currentVersion = 47C0EE551C4C1DA700CF4656 /* Sensors 3.xcdatamodel */;
 			path = Sensors.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

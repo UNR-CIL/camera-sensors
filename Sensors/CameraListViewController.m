@@ -10,7 +10,6 @@
 #import "SitePreviewCell.h"
 #import <QuartzCore/QuartzCore.h>
 
-#import "Region.h"
 #import "Site.h"
 #import "Image.h"
 #import "NSManagedObject+SCEntityFetchOrInsert.h"
@@ -21,6 +20,8 @@
 
 #import "AFNetworking.h"
 #import "NSURL+SCUtilities.h"
+
+#import "Project.h"
 
 @interface CameraListViewController () <NSFetchedResultsControllerDelegate>
 
@@ -63,63 +64,126 @@
     [super viewDidAppear:animated];
     
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-
-    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchRegionsURL] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSArray *regionDictionaries = (NSArray*)responseObject;
-        
-        [regionDictionaries enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            NSDictionary *regionDictionary = (NSDictionary*)obj;
-            Region *region = [Region regionFromDictionary:regionDictionary inManagedObjectContext:self.managedObjectContext];
-            
-            [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchSitesURLForRegionNamed:region.id] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSArray *siteDictionaries = (NSArray*)responseObject;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL sc_projectListURL]];
+    
+    NSLog(@">>> request %@", request.URL.absoluteString);
+    
+    
+    // Retrieve the list of projects
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (data) {
+            NSError *error;
+            id JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+            if (JSON) {
+                NSArray *projects = [(NSDictionary*)JSON valueForKey:@"Data"];
                 
-                [siteDictionaries enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                    Site *site = [Site siteFromDictionary:obj inManagedObjectContext:self.managedObjectContext];
-                    site.regionName = region.name;
-                    site.region = region;
-                    
-                    NSLog(@">>> Site %@", site);
-                    
-                    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchLatestItemURLForRegion:[[regionDictionary objectForKey:@"id"] lowercaseString] site:site.alias.lowercaseString] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        Image *newImage = [Image imageFromDictionary:responseObject inManagedObjectContext:self.managedObjectContext];
-                        
-                        NSLog(@">>>>] responseObject %@", responseObject);
-                        
-                        if (newImage.data == nil) {
-                            
-                            NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
-                            NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
-                            [[NSURLSession sharedSession] dataTaskWithRequest:imageRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                if (data) {
-                                    UIImage *image = [[UIImage alloc] initWithData:data];
-                                    if (image) {
-                                        site.thumbnailImage = image;
-                                        site.thumbnailImageDate = newImage.date;
-                                        
-                                        NSError *error;
-                                        [newImage.managedObjectContext save:&error];
-                                    }
+                NSMutableArray *allProjects = [NSMutableArray new];
+
+                for (NSDictionary *dictionary in projects) {
+                    Project *newProject = [Project projectFromDictionary:dictionary inManagedObjectContext:appDelegate.managedObjectContext];
+                    NSLog(@">>> newProj %@", newProject);
+                    [allProjects addObject:newProject];
+                }
+                
+                
+                // Get a list of sites for each project
+
+                for (Project *project in allProjects) {
+                    NSURLSessionDataTask *sessionDataTask = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL sc_sitesURLForProject:project] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                        if (data) {
+                            NSError *error;
+                            id JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+                            if (JSON) {
+                                NSArray *sites = [(NSDictionary*)JSON valueForKey:@"Data"];
+                                
+                                NSMutableArray *allSites = [NSMutableArray new];
+                                
+                                for (NSDictionary *dictionary in sites) {
+                                    Site *newSite = [Site siteFromDictionary:dictionary inManagedObjectContext:appDelegate.managedObjectContext];
+                                    newSite.project = project;
+                                    newSite.projectName = project.name;
+                                    
+                                    NSLog(@">>> newSite %@", newSite);
+                                    [allSites addObject:newSite];
                                 }
-                            }];
+                                
+                            }
+                            else {
+                                NSLog(@">>> No valid JSON found");
+                            }
+                        
                         }
-                        
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        
-                        NSLog(@"%@\n%@", operation, error.userInfo);
                     }];
-                    
-                }];
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"%@\n%@", operation, error.userInfo);
-            }];
-            
-        }];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@\n%@", operation, error.userInfo);
+                    [sessionDataTask resume];
+                }
+            }
+            else {
+                NSLog(@">>> No valid JSON found");
+            }
+
+        }
     }];
+    [dataTask resume];
+    
+    
+    
+    
+//    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchRegionsURL] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        NSArray *regionDictionaries = (NSArray*)responseObject;
+//        
+//        [regionDictionaries enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//            NSDictionary *regionDictionary = (NSDictionary*)obj;
+//            Region *region = [Region regionFromDictionary:regionDictionary inManagedObjectContext:self.managedObjectContext];
+//            
+//            [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchSitesURLForRegionNamed:region.id] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                NSArray *siteDictionaries = (NSArray*)responseObject;
+//                
+//                [siteDictionaries enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//                    Site *site = [Site siteFromDictionary:obj inManagedObjectContext:self.managedObjectContext];
+//                    site.regionName = region.name;
+//                    site.region = region;
+//                    
+//                    NSLog(@">>> Site %@", site);
+//                    
+//                    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchLatestItemURLForRegion:[[regionDictionary objectForKey:@"id"] lowercaseString] site:site.alias.lowercaseString] absoluteString] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                        Image *newImage = [Image imageFromDictionary:responseObject inManagedObjectContext:self.managedObjectContext];
+//                        
+//                        NSLog(@">>>>] responseObject %@", responseObject);
+//                        
+//                        if (newImage.data == nil) {
+//                            
+//                            NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
+//                            NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
+//                            [[NSURLSession sharedSession] dataTaskWithRequest:imageRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//                                if (data) {
+//                                    UIImage *image = [[UIImage alloc] initWithData:data];
+//                                    if (image) {
+//                                        site.thumbnailImage = image;
+//                                        site.thumbnailImageDate = newImage.date;
+//                                        
+//                                        NSError *error;
+//                                        [newImage.managedObjectContext save:&error];
+//                                    }
+//                                }
+//                            }];
+//                        }
+//                        
+//                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                        
+//                        NSLog(@"%@\n%@", operation, error.userInfo);
+//                    }];
+//                    
+//                }];
+//            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                NSLog(@"%@\n%@", operation, error.userInfo);
+//            }];
+//            
+//        }];
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"%@\n%@", operation, error.userInfo);
+//    }];
 }
 
 /**Automatically called when the system has low memory
@@ -202,7 +266,7 @@
         
         if (self.fetchedResultsController.fetchedObjects.count) {
             Site *site = [self.fetchedResultsController objectAtIndexPath:indexPath];
-            headerView.titleLabel.text = site.regionName;
+            headerView.titleLabel.text = site.projectName;
         }
         
         reusableview = headerView;
@@ -229,7 +293,6 @@
         NSIndexPath *indexPath = (NSIndexPath*)sender;
         Site *selectedSite = [self.fetchedResultsController objectAtIndexPath:indexPath];
         
-        NSAssert(selectedSite.region != nil, @"Region should not be nil");
         
         [segue.destinationViewController setDetailSite:selectedSite];
         [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
@@ -263,7 +326,7 @@
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"regionName" cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"projectName" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

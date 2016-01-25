@@ -7,37 +7,25 @@
 //
 
 #import "NSURL+SCUtilities.h"
+#import "Project.h"
 
 /* This category adds convenience methods to make it easier to create REST urls
  **/
 @implementation NSURL (SCUtilities)
 
-+ (NSURL*)sc_fetchRegionsURL
++ (NSURL*)sc_projectListURL
 {
-    NSString *urlString = [SCurlRoot stringByAppendingPathComponent:@"/nccp_images/regions"];
-    return [NSURL URLWithString:urlString];
+    NSString *urlString = @"http://sensor.nevada.edu/Services/Discovery/Webcam Projects/NRDC.Projects.Discovery.svc/discovery/projects";
+    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
+    return url;
 }
 
-+ (NSURL*)sc_fetchSitesURLForRegionNamed:(NSString*)regionName
++ (NSURL*)sc_sitesURLForProject:(Project*)project
 {
-    NSString *urlString = [SCurlRoot stringByAppendingPathComponent:@"/nccp_images/%@/sites"];
-    urlString = [NSString stringWithFormat:urlString, regionName];
-    return [NSURL URLWithString:urlString];
+    NSString *urlString = [project.infrastructureUrl stringByAppendingPathComponent:@"/infrastructure/sites"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    return url;
 }
 
-+ (NSURL*)sc_fetchLatestItemURLForRegion:(NSString*)regionName site:(NSString*)siteName
-{
-    NSString *urlString = [SCurlRoot stringByAppendingPathComponent:@"/nccp_images/%@/%@/latest"];
-    urlString = [NSString stringWithFormat:urlString, regionName, siteName];
-    return [NSURL URLWithString:urlString];
-}
-
-
-+ (NSURL*)sc_fetchImagesURLForRegion:(NSString*)regionName site:(NSString*)siteName limit:(NSInteger)limit
-{
-    NSString *urlString = [SCurlRoot stringByAppendingPathComponent:@"/nccp_images/%@/%@/image?limit=%i"];
-    urlString = [NSString stringWithFormat:urlString, regionName, siteName, limit];
-    return [NSURL URLWithString:urlString];
-}
 
 @end
