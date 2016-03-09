@@ -13,6 +13,7 @@
 #import "Site.h"
 #import "Image.h"
 #import "Stream.h"
+#import "Project.h"
 
 #import "PhotoViewController.h"
 
@@ -23,6 +24,8 @@
 @property (strong, nonatomic) NSArray *imageURLs;
 @property (strong, nonatomic) NSMutableArray *images;
 @property (strong, nonatomic) UIPopoverController *photoPopover;
+
+@property (nonatomic) NSString* currentExportId;
 
 @end
 
@@ -55,7 +58,7 @@
 
     
     NSLog(@">>> This is the detail Site %@", self.detailSite);
-    NSString *siteDetailFormatString = @"images/export/latest/stream/%@/addTimeStamps/True";
+    NSString *streamImagesFormatString = @"images/export/latest/stream/%@/addTimeStamps/True";
     
     NSURL *streamsURL = [NSURL sc_streamsURLForSite:self.detailSite];
     
@@ -70,11 +73,50 @@
                 NSLog(@">>>> This Stream: %@", newStream);
             }
             
+            for (Stream *stream in self.detailSite.streams.allObjects) {
+                
+                NSURL *url = [NSURL URLWithString:[self.detailSite.project.imageRetrievalUrl stringByAppendingPathComponent:[NSString stringWithFormat:streamImagesFormatString, stream.id]]];
+                NSLog(@">>> url %@", url);
+                NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                    NSLog(@">>> resonse %@", response);
+                    NSLog(@">>>> error %@", error);
+                    if (data != nil) {
+                        NSError *jsonError;
+                        NSDictionary *jsonDictionary = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+                        NSString *exportId = (NSString*)jsonDictionary[@"Data"];
+                        self.currentExportId = exportId;
+                        NSLog(@">>>> stream JSON currentExportId %@", self.currentExportId);
+                    }
+                    
+                }];
+                [dataTask resume];
+            }
         }
-        
     }];
     
     [task resume];
+    
+    
+}
+
+- (void)checkStatusOfExport:(NSString*)exportId
+{
+    
+}
+
+- (NSURL*)exportStatusURLForExportId:(NSString*)exportId
+{
+    NSString *exportStatusString = @"/images/export/%@/status"; // export id string
+
+    NSURL *url = [NSURL URLWithString:[self.detailSite.project.imageRetrievalUrl stringByAppendingPathComponent:[NSString stringWithFormat:exportStatusString, exportId]]];
+    return url;
+}
+
+- (NSURL*)exportLocationURLForExportId:(NSString*)exportId
+{
+    NSString *exportLocation = @"/images/export/%@/location"; // export location
+    NSURL *url = [NSURL URLWithString:[self.detailSite.project.imageRetrievalUrl stringByAppendingPathComponent:[NSString stringWithFormat:exportLocation, exportId]]];
+    return url;
 }
 
 - (void)didReceiveMemoryWarning
