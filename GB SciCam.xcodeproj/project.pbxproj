@@ -37,7 +37,7 @@
 		AB8595D01846782600DF5F84 /* SensorsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8595CF1846782600DF5F84 /* SensorsTests.m */; };
 		AB8595DD184678FB00DF5F84 /* Sensors-iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB8595DC184678FB00DF5F84 /* Sensors-iPhone.storyboard */; };
 		AB8595DF1846790E00DF5F84 /* Sensors-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB8595DE1846790E00DF5F84 /* Sensors-iPad.storyboard */; };
-		AB85962F184D08E100DF5F84 /* CameraListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB85962E184D08E100DF5F84 /* CameraListViewController.m */; };
+		AB85962F184D08E100DF5F84 /* SitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB85962E184D08E100DF5F84 /* SitesViewController.m */; };
 		AB859632184D1C3000DF5F84 /* SitePreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB859631184D1C3000DF5F84 /* SitePreviewCell.m */; };
 		AB9E030218BE747800D5B3F3 /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB9E030118BE747800D5B3F3 /* AppledocSettings.plist */; };
 		AB9E030518BE833F00D5B3F3 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9E030418BE833F00D5B3F3 /* Image.m */; };
@@ -102,8 +102,8 @@
 		AB8595CF1846782600DF5F84 /* SensorsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SensorsTests.m; sourceTree = "<group>"; };
 		AB8595DC184678FB00DF5F84 /* Sensors-iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Sensors-iPhone.storyboard"; sourceTree = "<group>"; };
 		AB8595DE1846790E00DF5F84 /* Sensors-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Sensors-iPad.storyboard"; sourceTree = "<group>"; };
-		AB85962D184D08E100DF5F84 /* CameraListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraListViewController.h; sourceTree = "<group>"; };
-		AB85962E184D08E100DF5F84 /* CameraListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraListViewController.m; sourceTree = "<group>"; };
+		AB85962D184D08E100DF5F84 /* SitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SitesViewController.h; sourceTree = "<group>"; };
+		AB85962E184D08E100DF5F84 /* SitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SitesViewController.m; sourceTree = "<group>"; };
 		AB859630184D1C3000DF5F84 /* SitePreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SitePreviewCell.h; sourceTree = "<group>"; };
 		AB859631184D1C3000DF5F84 /* SitePreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SitePreviewCell.m; sourceTree = "<group>"; };
 		AB9E030118BE747800D5B3F3 /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
@@ -281,8 +281,8 @@
 			children = (
 				AB8595B51846782600DF5F84 /* AppDelegate.h */,
 				AB8595B61846782600DF5F84 /* AppDelegate.m */,
-				AB85962D184D08E100DF5F84 /* CameraListViewController.h */,
-				AB85962E184D08E100DF5F84 /* CameraListViewController.m */,
+				AB85962D184D08E100DF5F84 /* SitesViewController.h */,
+				AB85962E184D08E100DF5F84 /* SitesViewController.m */,
 				AB496274187202DB00BA966F /* SiteDetailViewController.h */,
 				AB496275187202DB00BA966F /* SiteDetailViewController.m */,
 				AB4962771874A34B00BA966F /* CollectionHeaderView.h */,
@@ -434,7 +434,7 @@
 				ABC8DE3618A962200052DA04 /* ImagePreviewCell.m in Sources */,
 				AB859632184D1C3000DF5F84 /* SitePreviewCell.m in Sources */,
 				47C0EE601C4C1E8B00CF4656 /* Project.m in Sources */,
-				AB85962F184D08E100DF5F84 /* CameraListViewController.m in Sources */,
+				AB85962F184D08E100DF5F84 /* SitesViewController.m in Sources */,
 				AB8595B71846782600DF5F84 /* AppDelegate.m in Sources */,
 				AB496276187202DB00BA966F /* SiteDetailViewController.m in Sources */,
 				AB4BF5D21858FFC80012017E /* ImageToDataTransformer.m in Sources */,

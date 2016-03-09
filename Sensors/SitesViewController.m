@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 CSE UNR All rights reserved.
 //
 
-#import "CameraListViewController.h"
+#import "SitesViewController.h"
 #import "SitePreviewCell.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -23,14 +23,14 @@
 
 #import "Project.h"
 
-@interface CameraListViewController () <NSFetchedResultsControllerDelegate>
+@interface SitesViewController () <NSFetchedResultsControllerDelegate>
 
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
-@implementation CameraListViewController
+@implementation SitesViewController
 
 /**Default initializer
  @param Name of the nib

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CameraListViewController : UICollectionViewController
+@interface SitesViewController : UICollectionViewController
 
 /**Core Data managed object context
  
