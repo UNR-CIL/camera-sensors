@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		34D62BEA77B8415A82F81120 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B62DC570C97F456BAD5832D8 /* libPods.a */; };
+		473A83241C90D5B200BEF273 /* Image+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 473A831F1C90D5B100BEF273 /* Image+CoreDataProperties.m */; };
+		473A83251C90D5B200BEF273 /* Stream+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 473A83211C90D5B200BEF273 /* Stream+CoreDataProperties.m */; };
+		473A83261C90D5B200BEF273 /* Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 473A83231C90D5B200BEF273 /* Stream.m */; };
 		47C0EE5F1C4C1E8B00CF4656 /* Project+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C0EE5C1C4C1E8B00CF4656 /* Project+CoreDataProperties.m */; };
 		47C0EE601C4C1E8B00CF4656 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C0EE5E1C4C1E8B00CF4656 /* Project.m */; };
 		47C0EE6B1C4C367700CF4656 /* Site+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C0EE681C4C367700CF4656 /* Site+CoreDataProperties.m */; };
@@ -55,6 +58,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		473A831E1C90D5B100BEF273 /* Image+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Image+CoreDataProperties.h"; sourceTree = "<group>"; };
+		473A831F1C90D5B100BEF273 /* Image+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Image+CoreDataProperties.m"; sourceTree = "<group>"; };
+		473A83201C90D5B200BEF273 /* Stream+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Stream+CoreDataProperties.h"; sourceTree = "<group>"; };
+		473A83211C90D5B200BEF273 /* Stream+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stream+CoreDataProperties.m"; sourceTree = "<group>"; };
+		473A83221C90D5B200BEF273 /* Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stream.h; sourceTree = "<group>"; };
+		473A83231C90D5B200BEF273 /* Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stream.m; sourceTree = "<group>"; };
 		47C0EE551C4C1DA700CF4656 /* Sensors 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sensors 3.xcdatamodel"; sourceTree = "<group>"; };
 		47C0EE561C4C1E1900CF4656 /* GB SciCam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GB SciCam-Bridging-Header.h"; sourceTree = "<group>"; };
 		47C0EE5B1C4C1E8B00CF4656 /* Project+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -257,6 +266,12 @@
 				AB9E030418BE833F00D5B3F3 /* Image.m */,
 				AB8595B81846782600DF5F84 /* Sensors.xcdatamodeld */,
 				47C0EE561C4C1E1900CF4656 /* GB SciCam-Bridging-Header.h */,
+				473A831E1C90D5B100BEF273 /* Image+CoreDataProperties.h */,
+				473A831F1C90D5B100BEF273 /* Image+CoreDataProperties.m */,
+				473A83201C90D5B200BEF273 /* Stream+CoreDataProperties.h */,
+				473A83211C90D5B200BEF273 /* Stream+CoreDataProperties.m */,
+				473A83221C90D5B200BEF273 /* Stream.h */,
+				473A83231C90D5B200BEF273 /* Stream.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -439,9 +454,12 @@
 				AB496276187202DB00BA966F /* SiteDetailViewController.m in Sources */,
 				AB4BF5D21858FFC80012017E /* ImageToDataTransformer.m in Sources */,
 				47C0EE6C1C4C367700CF4656 /* Site.m in Sources */,
+				473A83241C90D5B200BEF273 /* Image+CoreDataProperties.m in Sources */,
 				AB8595B31846782600DF5F84 /* main.m in Sources */,
 				AB4F7B1018FF545D00E1D9E3 /* PhotoViewController.m in Sources */,
 				AB4F7B0A18FF538800E1D9E3 /* ImageScrollView.m in Sources */,
+				473A83251C90D5B200BEF273 /* Stream+CoreDataProperties.m in Sources */,
+				473A83261C90D5B200BEF273 /* Stream.m in Sources */,
 				AB23281718A2C84B00C581C1 /* NSManagedObject+SCEntityFetchOrInsert.m in Sources */,
 				AB9E030518BE833F00D5B3F3 /* Image.m in Sources */,
 				47C0EE5F1C4C1E8B00CF4656 /* Project+CoreDataProperties.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "NSURL+SCUtilities.h"
 #import "Project.h"
+#import "Site.h"
 
 /* This category adds convenience methods to make it easier to create REST urls
  **/
@@ -23,6 +24,13 @@
 + (NSURL*)sc_sitesURLForProject:(Project*)project
 {
     NSString *urlString = [project.infrastructureUrl stringByAppendingPathComponent:@"/infrastructure/sites"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    return url;
+}
+
++ (NSURL*)sc_streamsURLForSite:(Site*)site
+{
+    NSString *urlString = [site.project.imageRetrievalUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"/images/site/%@/streams", site.id]];
     NSURL *url = [NSURL URLWithString:urlString];
     return url;
 }

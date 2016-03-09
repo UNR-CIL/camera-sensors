@@ -1,5 +1,5 @@
 //
-//  Project+CoreDataProperties.m
+//  Stream+CoreDataProperties.m
 //  GB SciCam
 //
 //  Created by John Jusayan on 3/9/16.
@@ -9,14 +9,14 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Project+CoreDataProperties.h"
+#import "Stream+CoreDataProperties.h"
 
-@implementation Project (CoreDataProperties)
+@implementation Stream (CoreDataProperties)
 
-@dynamic imageRetrievalUrl;
-@dynamic infrastructureUrl;
+@dynamic id;
 @dynamic name;
 @dynamic type;
-@dynamic sites;
+@dynamic site;
+@dynamic images;
 
 @end

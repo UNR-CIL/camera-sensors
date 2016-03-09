@@ -12,6 +12,7 @@
 #import "AFNetworking.h"
 #import "Site.h"
 #import "Image.h"
+#import "Stream.h"
 
 #import "PhotoViewController.h"
 
@@ -43,7 +44,6 @@
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     self.managedObjectContext = appDelegate.managedObjectContext;
     
-    self.images = [[[self.detailSite images] allObjects] mutableCopy];
   
     self.title = self.detailSite.name;
 }
@@ -52,41 +52,29 @@
 {
     [super viewDidAppear:animated];
     
-    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 
-//    [appDelegate.sharedRequestOperationManager GET:[[NSURL sc_fetchImagesURLForRegion:[self.detailSite.region.id lowercaseString] site:self.detailSite.alias limit:20] absoluteString] parameters:NULL success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSArray *sites = (NSArray*)responseObject;
-//        
-//        [sites enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//            NSDictionary *imageDictionary = (NSDictionary*)obj;
-//                        
-//            Image *newImage = [Image imageFromDictionary:imageDictionary inManagedObjectContext:self.managedObjectContext];
-//            
-//            newImage.site = self.detailSite;
-//            [self.images addObject:newImage];
-//            
-//            if (newImage.data == nil) {
-//                NSURL *url = [NSURL URLWithString:[newImage.url stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
-//                NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url];
-//                
-//                [[NSURLSession sharedSession] dataTaskWithRequest:imageRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//                    if (data) {
-//                        UIImage *image = [[UIImage alloc] initWithData:data];
-//                        if (image) {
-//                            newImage.data = data;
-//                            NSError *error;
-//                            [newImage.managedObjectContext save:&error];
-//                            [self.collectionView reloadData];
-//                        }
-//                    }
-//                }];
-//            }
-//        }];
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@">>> Response %@", [error userInfo]);
-//        
-//    }];
+    
+    NSLog(@">>> This is the detail Site %@", self.detailSite);
+    NSString *siteDetailFormatString = @"images/export/latest/stream/%@/addTimeStamps/True";
+    
+    NSURL *streamsURL = [NSURL sc_streamsURLForSite:self.detailSite];
+    
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:streamsURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (data != nil) {
+            NSError *jsonError;
+            NSDictionary *jsonDictionary = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            NSArray *streams = (NSArray*)jsonDictionary[@"Data"];
+            for (NSDictionary *streamDictionary in streams) {
+                Stream *newStream = [Stream streamFromDictionary:streamDictionary inManagedObjectContext:self.managedObjectContext];
+                newStream.site = self.detailSite;
+                NSLog(@">>>> This Stream: %@", newStream);
+            }
+            
+        }
+        
+    }];
+    
+    [task resume];
 }
 
 - (void)didReceiveMemoryWarning

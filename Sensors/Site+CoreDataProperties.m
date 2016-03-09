@@ -2,7 +2,7 @@
 //  Site+CoreDataProperties.m
 //  GB SciCam
 //
-//  Created by John Jusayan on 1/17/16.
+//  Created by John Jusayan on 3/9/16.
 //  Copyright © 2016 Treeness, LLC. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,18 +14,18 @@
 @implementation Site (CoreDataProperties)
 
 @dynamic alias;
+@dynamic altitude;
 @dynamic id;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic name;
+@dynamic projectName;
 @dynamic thumbnailImage;
 @dynamic thumbnailImageDate;
-@dynamic altitude;
 @dynamic timeZoneAbbreviation;
 @dynamic timeZoneOffset;
 @dynamic type;
-@dynamic images;
-@dynamic projectName;
 @dynamic project;
+@dynamic streams;
 
 @end

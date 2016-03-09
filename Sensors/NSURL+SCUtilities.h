@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class Project;
+@class Site;
 
 @interface NSURL (SCUtilities)
 
@@ -27,5 +28,12 @@
  */
 + (NSURL*)sc_sitesURLForProject:(Project*)project;
 
+/**
+ Creates a url used to retrieve a listing of streams for a site
+ 
+ @param Site instance for the requested streams
+ @return NSURL instance for retrieving stream listing for a site
+ */
++ (NSURL*)sc_streamsURLForSite:(Site*)site;
 
 @end
