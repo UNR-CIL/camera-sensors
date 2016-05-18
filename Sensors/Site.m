@@ -28,6 +28,7 @@
     newSite.name = [siteDictionary objectForKey:@"Name"];
     newSite.timeZoneAbbreviation = [siteDictionary objectForKey:@"TimeZoneAbbreviation"];
     newSite.timeZoneOffset = [siteDictionary objectForKey:@"TimeZoneOffset"];
+
     newSite.type = [siteDictionary objectForKey:@"__type"];
     
     return newSite;

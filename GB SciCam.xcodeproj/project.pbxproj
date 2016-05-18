@@ -64,6 +64,7 @@
 		473A83211C90D5B200BEF273 /* Stream+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stream+CoreDataProperties.m"; sourceTree = "<group>"; };
 		473A83221C90D5B200BEF273 /* Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stream.h; sourceTree = "<group>"; };
 		473A83231C90D5B200BEF273 /* Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stream.m; sourceTree = "<group>"; };
+		47AD38BB1CEC33E400F39C3A /* Sensors 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sensors 4.xcdatamodel"; sourceTree = "<group>"; };
 		47C0EE551C4C1DA700CF4656 /* Sensors 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sensors 3.xcdatamodel"; sourceTree = "<group>"; };
 		47C0EE561C4C1E1900CF4656 /* GB SciCam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GB SciCam-Bridging-Header.h"; sourceTree = "<group>"; };
 		47C0EE5B1C4C1E8B00CF4656 /* Project+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -699,11 +700,12 @@
 		AB8595B81846782600DF5F84 /* Sensors.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				47AD38BB1CEC33E400F39C3A /* Sensors 4.xcdatamodel */,
 				47C0EE551C4C1DA700CF4656 /* Sensors 3.xcdatamodel */,
 				ABEAF9781896F1E400532B5E /* Sensors 2.xcdatamodel */,
 				AB8595B91846782600DF5F84 /* Sensors.xcdatamodel */,
 			);
-			currentVersion = 47C0EE551C4C1DA700CF4656 /* Sensors 3.xcdatamodel */;
+			currentVersion = 47AD38BB1CEC33E400F39C3A /* Sensors 4.xcdatamodel */;
 			path = Sensors.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

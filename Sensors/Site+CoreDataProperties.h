@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) id thumbnailImage;
 @property (nullable, nonatomic, retain) NSDate *thumbnailImageDate;
 @property (nullable, nonatomic, retain) NSString *timeZoneAbbreviation;
-@property (nullable, nonatomic, retain) NSString *timeZoneOffset;
+@property (nullable, nonatomic, retain) NSNumber *timeZoneOffset;
 @property (nullable, nonatomic, retain) NSString *type;
 @property (nullable, nonatomic, retain) Project *project;
 @property (nullable, nonatomic, retain) NSSet<NSManagedObject *> *streams;
