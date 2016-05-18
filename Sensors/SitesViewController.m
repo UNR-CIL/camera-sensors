@@ -238,7 +238,12 @@
     SitePreviewCell *sitePreviewCell = (SitePreviewCell*)cell;
 
     Site *site = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    sitePreviewCell.imageView.image = site.thumbnailImage;
+    if (site.thumbnailImage) {
+        sitePreviewCell.imageView.image = site.thumbnailImage;
+    }
+    else {
+        sitePreviewCell.imageView.image = [UIImage imageNamed:@"Landscape"];
+    }
     sitePreviewCell.siteNameLabel.text = site.name;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
